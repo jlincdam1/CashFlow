@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CashFlow.ActivitiesScreen"
+             Title="ActivitiesScreen">
+    <ScrollView>
+        <AbsoluteLayout>
+            <BoxView x:Name="_bg__appdesign"
+                     AbsoluteLayout.LayoutBounds="0.5, 0.05, 330, 58" 
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+	                 Color="#BCBCBC" CornerRadius="5, 5, -1, -1"/>
+            <Label  Text="Inversión" FontFamily="Montserrat-Medium"
+                    AbsoluteLayout.LayoutBounds="0.14, 0.06, -1, -1" 
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+            <Entry  FontSize="17" FontFamily="Montserrat-Medium"
+                    Keyboard="Numeric" MaxLength="10"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.08, 305, 45"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+            <Button Text="+   Añadir" FontFamily="Montserrat-Medium" BackgroundColor="#BCBCBC"
+                    TextColor="Black" CornerRadius="10"
+                    AbsoluteLayout.LayoutBounds="0.89, 0.17, 100, 40" 
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+            <BoxView x:Name="das"
+                     AbsoluteLayout.LayoutBounds="0.5, 0.3, 330, 58" 
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+	                 Color="#BCBCBC" CornerRadius="5, 5, -1, -1"/>
+            <Label  Text="Gasto" FontFamily="Montserrat-Medium"
+                    AbsoluteLayout.LayoutBounds="0.14, 0.296, -1, -1" 
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+            <Entry  FontSize="17" FontFamily="Montserrat-Medium"
+                    Keyboard="Numeric" MaxLength="10"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.324, 305, 45"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+            <Button Text="+   Añadir" FontFamily="Montserrat-Medium" BackgroundColor="#BCBCBC"
+                    TextColor="Black" CornerRadius="10"
+                    AbsoluteLayout.LayoutBounds="0.89, 0.41, 100, 40" 
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+            <Border Stroke="Black" StrokeThickness="3" Padding="16,8" StrokeDashArray="0 1 0 0">
+                <Label Text="GASTOS E INVERSIONES" />
+            </Border>
+        </AbsoluteLayout>
+    </ScrollView>
+</ContentPage>

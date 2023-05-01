@@ -57,12 +57,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="ActivitiesScreen.xaml.cs">
+	    <DependentUpon>ActivitiesScreen.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="RegisterScreen.xaml.cs">
 	    <DependentUpon>RegisterScreen.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="ActivitiesScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="GraphicsScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
