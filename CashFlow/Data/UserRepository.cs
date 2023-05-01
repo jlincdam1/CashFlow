@@ -29,5 +29,22 @@ namespace CashFlow.Data
             Init();
             return _connection.Table<User>().Where(o => o.Id == id).FirstOrDefault();
         }
+
+        public void Add(User user) 
+        { 
+            _connection = new SQLiteConnection( _dbPath);
+            _connection.Insert(user);
+        }
+
+        public void Delete(int id)
+        {
+            _connection = new SQLiteConnection(_dbPath);
+            _connection.Delete(new User { Id = id});
+        }
+
+        public void Update(int id, User user)
+        {
+            _connection.Update(new User { Id = id, });
+        }
     }
 }
