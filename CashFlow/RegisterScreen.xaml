@@ -21,35 +21,38 @@
                     Margin="10, 10, 10, 5"
                     MaxLength="80" FontFamily="Montserrat-Medium"
                     Placeholder="Nombre*" FontSize="16"
-                    PlaceholderColor="DarkSlateGray"/>
+                    PlaceholderColor="DarkSlateGray"
+                    TextChanged="on_TextChanged"/>
 
             <Entry	x:Name="apellidos"
                     Margin="10, 5, 10, 5"
                     MaxLength="100" FontFamily="Montserrat-Medium"
                     Placeholder="Apellidos*" FontSize="16"
-                    PlaceholderColor="DarkSlateGray"/>
+                    PlaceholderColor="DarkSlateGray"
+                    TextChanged="on_TextChanged"/>
 
             <Entry	x:Name="capitalI"
                     Margin="10, 5, 10, 5"
                     MaxLength="12" FontFamily="Montserrat-Medium"
                     Keyboard="Numeric"
                     Placeholder="Capital inicial*" FontSize="16"
-                    PlaceholderColor="DarkSlateGray"/>
+                    PlaceholderColor="DarkSlateGray"
+                    TextChanged="on_TextChanged"/>
 
             <Entry	x:Name="gananciaM"
                     Margin="10, 5, 10, 5"
                     MaxLength="12" FontFamily="Montserrat-Medium"
                     Keyboard="Numeric"
 					Placeholder="Ganancia mensual" FontSize="16"
-                    PlaceholderColor="DarkSlateGray"/>
+                    PlaceholderColor="DarkSlateGray"
+                    TextChanged="on_TextChanged"/>
 
             <Button x:Name="btnRegistro"
                     Text="REGISTRARSE" FontFamily="Montserrat-Medium"
                     FontAttributes="Bold" FontSize="17"
                     TextColor="Black" BackgroundColor="White"
-                    Opacity="0.8"
                     Margin="25, 30, 25, 5" CornerRadius="45"
-                    Clicked="Registrarse"/>
+                    Clicked="Registrarse" IsEnabled="False" Opacity="0.2"/>
 
             <Label  FontFamily="Montserrat-Medium"
 					FontSize="11"
