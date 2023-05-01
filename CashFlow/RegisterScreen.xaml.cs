@@ -1,8 +1,8 @@
 ﻿namespace CashFlow;
 
-public partial class MainPage : ContentPage
+public partial class RegisterScreen : ContentPage
 {
-	public MainPage()
+	public RegisterScreen()
 	{
 		InitializeComponent();
 	}
