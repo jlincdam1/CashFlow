@@ -5,7 +5,8 @@
 
     <ScrollView>
         <StackLayout Margin="30, 0, 30, 20">
-            <Image Source="cashflowicon.png" WidthRequest="220" Margin="0, 40, 0, 25"/>
+            <Image Source="cashflowicon.png" WidthRequest="220" Margin="0, 20, 0, 15"/>
+            
             <Label  FontFamily="Montserrat-Medium" FontSize="22"
                     FontAttributes="Bold"
 					Text="BIENVENIDO A CASHFLOW!"
