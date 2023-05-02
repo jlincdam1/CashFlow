@@ -12,12 +12,7 @@ namespace CashFlow.Services
     {
         public SQLiteAsyncConnection _dbConnection;
 
-        public UserService()
-        {
-            SetupDatabase();
-        }
-
-        private async void SetupDatabase()
+        private async Task SetupDatabase()
         {
             if(_dbConnection == null)
             {
@@ -27,24 +22,28 @@ namespace CashFlow.Services
             }
         }
 
-        public Task<int> AddUser(User user)
+        public async Task<int> AddUser(User user)
         {
-            return _dbConnection.InsertAsync(user);
+            await SetupDatabase();
+            return await _dbConnection.InsertAsync(user);
         }
 
-        public Task<int> DeleteUser()
+        public async Task<int> DeleteUser()
         {
-            return _dbConnection.DeleteAllAsync<User>();
+            await SetupDatabase();
+            return await _dbConnection.DeleteAllAsync<User>();
         }
 
-        public Task<User> GetUser()
+        public async Task<User> GetUser()
         {
-            return _dbConnection.Table<User>().FirstOrDefaultAsync();
+            await SetupDatabase();
+            return await _dbConnection.Table<User>().FirstOrDefaultAsync();
         }
 
-        public Task<int> UpdateUser(User user)
+        public async Task<int> UpdateUser(User user)
         {
-            return _dbConnection.UpdateAsync(user);
+            await SetupDatabase();
+            return await _dbConnection.UpdateAsync(user);
         }
     }
 }
