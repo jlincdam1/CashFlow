@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CashFlow.Services;
+using Microsoft.Extensions.Logging;
 
 namespace CashFlow;
 
@@ -13,7 +14,8 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+			})
+			.Services.AddSingleton<IUserService, UserService>();
 
 #if DEBUG
 		builder.Logging.AddDebug();
