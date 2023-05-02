@@ -1,4 +1,5 @@
 ﻿using CashFlow.Models;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,25 @@ using System.Threading.Tasks;
 
 namespace CashFlow.Services
 {
-    internal class UserService : IUserService
+    public class UserService : IUserService
     {
+        public SQLiteAsyncConnection _dbConnection;
+
+        public UserService()
+        {
+            SetupDatabase();
+        }
+
+        private async void SetupDatabase()
+        {
+            if(_dbConnection == null)
+            {
+                string dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "cashFlow.db");
+                _dbConnection = new SQLiteAsyncConnection(dbpath);
+                await _dbConnection.CreateTableAsync<User>();
+            }
+        }
+
         public Task<bool> AddUser(User user)
         {
             throw new NotImplementedException();
