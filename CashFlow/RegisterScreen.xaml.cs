@@ -84,8 +84,15 @@ public partial class RegisterScreen : ContentPage
 
     async void Button_Clicked(object sender, EventArgs e)
     {
-        User usuario = await database.GetUserAsync();
-        info.Text = usuario.Name + usuario.Surnames + usuario.InitCapital + usuario.Capital + usuario.MensualEarning + usuario.Id;
+        try
+        {
+            User usuario = await database.GetUserAsync();
+            info.Text = usuario.Name + usuario.Surnames + usuario.InitCapital + usuario.Capital + usuario.MensualEarning + usuario.Id;
+        }
+        catch
+        {
+            await DisplayAlert("Error", "Al mostrar", "Aceptar");
+        }
     }
 
     async void Button_Clicked_1(object sender, EventArgs e)
