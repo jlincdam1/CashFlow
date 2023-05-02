@@ -81,5 +81,16 @@ public partial class RegisterScreen : ContentPage
             }
         }
     }
+
+    async void Button_Clicked(object sender, EventArgs e)
+    {
+        User usuario = await _userService.GetUser();
+        info.Text = usuario.Name + usuario.Surnames + usuario.InitCapital + usuario.Capital + usuario.MensualEarning + usuario.Id;
+    }
+
+    async void Button_Clicked_1(object sender, EventArgs e)
+    {
+        await _userService.DeleteUser();
+    }
 }
 

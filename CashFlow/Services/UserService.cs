@@ -32,9 +32,9 @@ namespace CashFlow.Services
             return _dbConnection.InsertAsync(user);
         }
 
-        public Task<int> DeleteUser(User user)
+        public Task<int> DeleteUser()
         {
-            return _dbConnection.DeleteAsync(user);
+            return _dbConnection.DeleteAllAsync<User>();
         }
 
         public Task<User> GetUser()

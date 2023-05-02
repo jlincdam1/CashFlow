@@ -13,7 +13,7 @@ namespace CashFlow.Services
 
         Task<int> AddUser(User user);
 
-        Task<int> DeleteUser(User user);
+        Task<int> DeleteUser();
         Task<int> UpdateUser(User user);
     }
 }
