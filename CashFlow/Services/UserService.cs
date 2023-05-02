@@ -16,7 +16,7 @@ namespace CashFlow.Services
         {
             if(_dbConnection == null)
             {
-                string dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "cashFlow.db");
+                string dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "cashFlow.db3");
                 _dbConnection = new SQLiteAsyncConnection(dbpath);
                 await _dbConnection.CreateTableAsync<User>();
             }
