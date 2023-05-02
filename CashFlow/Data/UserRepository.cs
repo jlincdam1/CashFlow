@@ -39,12 +39,13 @@ namespace CashFlow.Data
         public void Delete(int id)
         {
             _connection = new SQLiteConnection(_dbPath);
-            _connection.Delete(new User { Id = id});
+            _connection.Delete(new User{ Id = id});
         }
 
-        public void Update(int id, User user)
+        public void Update(User user)
         {
-            _connection.Update(new User { Id = id, });
+            _connection = new SQLiteConnection(_dbPath);
+            _connection.Update(user);
         }
     }
 }
