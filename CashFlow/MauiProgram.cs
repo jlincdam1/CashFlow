@@ -1,4 +1,4 @@
-﻿using CashFlow.Services;
+﻿using CashFlow.Data;
 using Microsoft.Extensions.Logging;
 
 namespace CashFlow;
@@ -19,7 +19,8 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-		builder.Services.AddSingleton<IUserService, UserService>();
+		builder.Services.AddSingleton<RegisterScreen>();
+		builder.Services.AddSingleton<CashFlowDatabase>();
         return builder.Build();
 	}
 }

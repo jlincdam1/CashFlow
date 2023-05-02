@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace CashFlow.Models
 {
-    [Table("User")]
     public class User
     {
-        [PrimaryKey, Column("Id")]
+        [PrimaryKey]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surnames { get; set; }
