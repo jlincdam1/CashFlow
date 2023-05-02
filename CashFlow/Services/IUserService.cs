@@ -9,11 +9,11 @@ namespace CashFlow.Services
 {
     public interface IUserService
     {
-        Task<List<User>> GetUser();
+        Task<User> GetUser();
 
-        Task<bool> AddUser(User user);
+        Task<int> AddUser(User user);
 
-        Task<bool> DeleteUser(User user);
-        Task<bool> UpdateUser(User user);
+        Task<int> DeleteUser(User user);
+        Task<int> UpdateUser(User user);
     }
 }

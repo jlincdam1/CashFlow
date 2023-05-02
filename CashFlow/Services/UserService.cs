@@ -27,24 +27,24 @@ namespace CashFlow.Services
             }
         }
 
-        public Task<bool> AddUser(User user)
+        public Task<int> AddUser(User user)
         {
-            throw new NotImplementedException();
+            return _dbConnection.InsertAsync(user);
         }
 
-        public Task<bool> DeleteUser(User user)
+        public Task<int> DeleteUser(User user)
         {
-            throw new NotImplementedException();
+            return _dbConnection.DeleteAsync(user);
         }
 
-        public Task<List<User>> GetUser()
+        public Task<User> GetUser()
         {
-            throw new NotImplementedException();
+            return _dbConnection.Table<User>().FirstOrDefaultAsync();
         }
 
-        public Task<bool> UpdateUser(User user)
+        public Task<int> UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            return _dbConnection.UpdateAsync(user);
         }
     }
 }
