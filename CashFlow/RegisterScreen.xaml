@@ -18,14 +18,14 @@
 					Text="Regístrese para comenzar a gestionar su capital"/>
 
             <Entry	x:Name="nombre"
-                    Margin="10, 10, 10, 5"
+                    Margin="10, 10, 10, 5" Keyboard="Text"
                     MaxLength="80" FontFamily="Montserrat-Medium"
                     Placeholder="Nombre*" FontSize="16"
                     PlaceholderColor="DarkSlateGray"
                     TextChanged="on_TextChanged"/>
 
             <Entry	x:Name="apellidos"
-                    Margin="10, 5, 10, 5"
+                    Margin="10, 5, 10, 5" Keyboard="Text"
                     MaxLength="100" FontFamily="Montserrat-Medium"
                     Placeholder="Apellidos*" FontSize="16"
                     PlaceholderColor="DarkSlateGray"
