@@ -20,6 +20,7 @@ namespace CashFlow.Data
 
             Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
             await Database.CreateTableAsync<User>();
+            await Database.CreateTableAsync<Activities>();
         }
         public async Task<User> GetUserAsync()
         {
@@ -42,6 +43,28 @@ namespace CashFlow.Data
         {
             await Init();
             return await Database.UpdateAsync(user);
+        }
+
+        // Métodos para los movimientos
+        public async Task<List<Activities>> GetActivitiesAsync()
+        {
+            await Init();
+            return await Database.Table<Activities>().ToListAsync();
+        }
+        public async Task<Activities> GetActivityAsync(int id)
+        {
+            await Init();
+            return await Database.Table<Activities>().Where(i => i.Id == id).FirstOrDefaultAsync();
+        }
+        public async Task<int> AddActivityAsync(Activities act)
+        {
+            await Init();
+            return await Database.InsertAsync(act);
+        }
+        public async Task<int> DeleteActivityAsync(Activities act)
+        {
+            await Init();
+            return await Database.DeleteAsync(act);
         }
     }
 }
