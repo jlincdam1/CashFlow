@@ -8,7 +8,7 @@ namespace CashFlow
 {
     public static class Constants
     {
-        public const string DatabaseFilename = "Users.db3";
+        public const string DatabaseFilename = "CashFlow.db3";
 
         public const SQLite.SQLiteOpenFlags Flags =
             // open the database in read/write mode
