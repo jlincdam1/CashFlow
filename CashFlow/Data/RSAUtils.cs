@@ -8,10 +8,10 @@ namespace CashFlow.Data
 {
     public class RSAUtils
     {
-        static string pubKeyStr;
-        static string privKeyStr;
+        public static string pubKeyStr;
+        public static string privKeyStr;
 
-        static string Encriptar(string str)
+        public static string Encriptar(string str)
         {
             RSAServices rsa = new RSAServices();
             RSAServices rsa2 = new RSAServices();
@@ -26,7 +26,7 @@ namespace CashFlow.Data
             return resulEncrit;
         }
 
-        static string Desencriptar(string privkeyStr, string msjEncriptado)
+        public static string Desencriptar(string privkeyStr, string msjEncriptado)
         {
             RSAServices rsa = new RSAServices();
 

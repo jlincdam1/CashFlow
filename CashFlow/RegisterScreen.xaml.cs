@@ -22,27 +22,31 @@ public partial class RegisterScreen : ContentPage
         if (string.IsNullOrWhiteSpace(gananciaM.Text))
         {
             double capI = Convert.ToDouble(capitalI.Text, CultureInfo.InvariantCulture);
+            string nombreEncriptado = RSAUtils.Encriptar(nombre.Text.Trim());
+            string apellidosEncriptado = RSAUtils.Encriptar(apellidos.Text.Trim());
             user = new User
             {
                 Id = 1,
-                Name = nombre.Text,
-                Surnames = apellidos.Text,
-                InitCapital = ((float)Math.Round(capI, 2)),
-                Capital = ((float)Math.Round(capI, 2))
+                Name = nombreEncriptado,
+                Surnames = apellidosEncriptado,
+                InitCapital = (float)Math.Round(capI, 2),
+                Capital = (float)Math.Round(capI, 2)
             };
         }
         else
         {
             double capI = Convert.ToDouble(capitalI.Text, CultureInfo.InvariantCulture);
             double menE = Convert.ToDouble(gananciaM.Text, CultureInfo.InvariantCulture);
+            string nombreEncriptado = RSAUtils.Encriptar(nombre.Text.Trim());
+            string apellidosEncriptado = RSAUtils.Encriptar(apellidos.Text.Trim());
             user = new User
             {
                 Id = 1,
-                Name = nombre.Text,
-                Surnames = apellidos.Text,
-                InitCapital = ((float)Math.Round(capI, 2)),
-                Capital = ((float)Math.Round(capI, 2)),
-                MensualEarning = ((float)Math.Round(menE, 2))
+                Name = nombreEncriptado,
+                Surnames = apellidosEncriptado,
+                InitCapital = (float)Math.Round(capI, 2),
+                Capital = (float)Math.Round(capI, 2),
+                MensualEarning = (float)Math.Round(menE, 2)
             };
         }
 
@@ -84,24 +88,6 @@ public partial class RegisterScreen : ContentPage
                 btnRegistro.IsEnabled = false;
             }
         }
-    }
-
-    async void Button_Clicked(object sender, EventArgs e)
-    {
-        try
-        {
-            User usuario = await database.GetUserAsync();
-            info.Text = usuario.Name + " " + usuario.Surnames + " " + usuario.InitCapital + " " + usuario.Capital + " " + usuario.MensualEarning + " " + usuario.Id;
-        }
-        catch
-        {
-            await DisplayAlert("Error", "Al mostrar", "Aceptar");
-        }
-    }
-
-    async void Button_Clicked_1(object sender, EventArgs e)
-    {
-        await database.DeleteUserAsync();
     }
 }
 
