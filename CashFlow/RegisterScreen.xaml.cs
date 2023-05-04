@@ -1,5 +1,6 @@
 ﻿using CashFlow.Data;
 using CashFlow.Models;
+using System.Globalization;
 
 namespace CashFlow;
 
@@ -20,25 +21,28 @@ public partial class RegisterScreen : ContentPage
 
         if (string.IsNullOrWhiteSpace(gananciaM.Text))
         {
+            double capI = Convert.ToDouble(capitalI.Text, CultureInfo.InvariantCulture);
             user = new User
             {
                 Id = 1,
                 Name = nombre.Text,
                 Surnames = apellidos.Text,
-                InitCapital = float.Parse(capitalI.Text),
-                Capital = float.Parse(capitalI.Text)
+                InitCapital = ((float)Math.Round(capI, 2)),
+                Capital = ((float)Math.Round(capI, 2))
             };
         }
         else
         {
+            double capI = Convert.ToDouble(capitalI.Text, CultureInfo.InvariantCulture);
+            double menE = Convert.ToDouble(gananciaM.Text, CultureInfo.InvariantCulture);
             user = new User
             {
                 Id = 1,
                 Name = nombre.Text,
                 Surnames = apellidos.Text,
-                InitCapital = float.Parse(capitalI.Text),
-                Capital = float.Parse(capitalI.Text),
-                MensualEarning = float.Parse(gananciaM.Text)
+                InitCapital = ((float)Math.Round(capI, 2)),
+                Capital = ((float)Math.Round(capI, 2)),
+                MensualEarning = ((float)Math.Round(menE, 2))
             };
         }
 
@@ -46,7 +50,7 @@ public partial class RegisterScreen : ContentPage
 
         if(response > 0)
         {
-            await DisplayAlert("Éxito", "Añadido correctamente", "Aceptar");
+            await DisplayAlert("Éxito", "Añadido correctamente" + (user.Capital + 2), "Aceptar");
         }
         else
         {
@@ -87,7 +91,7 @@ public partial class RegisterScreen : ContentPage
         try
         {
             User usuario = await database.GetUserAsync();
-            info.Text = usuario.Name + usuario.Surnames + usuario.InitCapital + usuario.Capital + usuario.MensualEarning + usuario.Id;
+            info.Text = usuario.Name + " " + usuario.Surnames + " " + usuario.InitCapital + " " + usuario.Capital + " " + usuario.MensualEarning + " " + usuario.Id;
         }
         catch
         {
