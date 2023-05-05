@@ -7,9 +7,12 @@ namespace CashFlow;
 public partial class RegisterScreen : ContentPage
 {
     private readonly CashFlowDatabase database;
+    public static string namePrivKey;
+    public static string surnamesPrivKey;
 	public RegisterScreen()
 	{
 		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
         database = new CashFlowDatabase();
 	}
 
@@ -17,13 +20,16 @@ public partial class RegisterScreen : ContentPage
 	{
         await btnRegistro.ScaleTo(0.8, 50);
         await btnRegistro.ScaleTo(1, 50);
-        User user = new User();
+        User user;
+
+        double capI = Convert.ToDouble(capitalI.Text, CultureInfo.InvariantCulture);
+        string nombreEncriptado = RSAUtils.encriptar(nombre.Text.Trim());
+        namePrivKey = RSAUtils.privKeyStr;
+        string apellidosEncriptado = RSAUtils.encriptar(apellidos.Text.Trim());
+        surnamesPrivKey = RSAUtils.privKeyStr;
 
         if (string.IsNullOrWhiteSpace(gananciaM.Text))
         {
-            double capI = Convert.ToDouble(capitalI.Text, CultureInfo.InvariantCulture);
-            string nombreEncriptado = RSAUtils.Encriptar(nombre.Text.Trim());
-            string apellidosEncriptado = RSAUtils.Encriptar(apellidos.Text.Trim());
             user = new User
             {
                 Id = 1,
@@ -35,10 +41,7 @@ public partial class RegisterScreen : ContentPage
         }
         else
         {
-            double capI = Convert.ToDouble(capitalI.Text, CultureInfo.InvariantCulture);
             double menE = Convert.ToDouble(gananciaM.Text, CultureInfo.InvariantCulture);
-            string nombreEncriptado = RSAUtils.Encriptar(nombre.Text.Trim());
-            string apellidosEncriptado = RSAUtils.Encriptar(apellidos.Text.Trim());
             user = new User
             {
                 Id = 1,
@@ -54,7 +57,11 @@ public partial class RegisterScreen : ContentPage
 
         if(response > 0)
         {
-            await DisplayAlert("Éxito", "Añadido correctamente" + (user.Capital + 2), "Aceptar");
+            await DisplayAlert("Éxito", "Usuario registrado correctamente", "Aceptar");
+            await Task.WhenAll(
+                this.FadeTo(0, 1000)
+            );
+            await Navigation.PushAsync(new LoadingScreen());
         }
         else
         {
@@ -88,6 +95,11 @@ public partial class RegisterScreen : ContentPage
                 btnRegistro.IsEnabled = false;
             }
         }
+    }
+
+    private async void Button_Clicked(object sender, EventArgs e)
+    {
+        await database.DeleteUserAsync();
     }
 }
 

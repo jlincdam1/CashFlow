@@ -10,8 +10,7 @@ namespace CashFlow.Data
     {
         public static string pubKeyStr;
         public static string privKeyStr;
-
-        public static string Encriptar(string str)
+        public static string encriptar(string str)
         {
             RSAServices rsa = new RSAServices();
             RSAServices rsa2 = new RSAServices();

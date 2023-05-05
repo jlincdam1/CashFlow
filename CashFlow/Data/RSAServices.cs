@@ -11,9 +11,8 @@ namespace CashFlow.Data
     public class RSAServices
     {
         private RSACryptoServiceProvider csp;
-        // Clave privada para desencriptar
+
         private RSAParameters _privateKey;
-        // Clave pública para encriptar
         private RSAParameters _publicKey;
 
         public RSAServices()
