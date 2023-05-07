@@ -66,5 +66,10 @@ namespace CashFlow.Data
             await Init();
             return await Database.DeleteAsync(act);
         }
+        public async Task<int> DeleteAllActivities()
+        {
+            await Init();
+            return await Database.DeleteAllAsync<Activities>();
+        }
     }
 }
