@@ -12,13 +12,13 @@
                 <Label Text="Inversión" FontFamily="Montserrat-Medium"
                     AbsoluteLayout.LayoutBounds="0.07, 0.2, -1, -1" 
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
-                <Entry FontSize="17" FontFamily="Montserrat-Medium"
+                <Entry x:Name="invest" FontSize="17" FontFamily="Montserrat-Medium"
                     Keyboard="Numeric" MaxLength="10"
                     AbsoluteLayout.LayoutBounds="0.5, 1.5, 305, 45"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
             </AbsoluteLayout>
             <Button Text="+   Añadir" FontFamily="Montserrat-Medium" BackgroundColor="#BCBCBC" Margin="0, 20, 0, 40"
-                    TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End"/>
+                    TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End" Clicked="AddInversion"/>
             <AbsoluteLayout>
                 <BoxView AbsoluteLayout.LayoutBounds="0.5, 0, 330, 58" 
                      AbsoluteLayout.LayoutFlags="PositionProportional"
@@ -26,13 +26,13 @@
                 <Label Text="Gasto" FontFamily="Montserrat-Medium"
                     AbsoluteLayout.LayoutBounds="0.07, 0.2, -1, -1" 
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
-                <Entry FontSize="17" FontFamily="Montserrat-Medium"
+                <Entry x:Name="outlay" FontSize="17" FontFamily="Montserrat-Medium"
                     Keyboard="Numeric" MaxLength="10"
                     AbsoluteLayout.LayoutBounds="0.5, 1.5, 305, 45"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
             </AbsoluteLayout>
             <Button Text="+   Añadir" FontFamily="Montserrat-Medium" BackgroundColor="#BCBCBC" Margin="0, 20, 0, 40"
-                    TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End"/>
+                    TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End" Clicked="AddOutlay"/>
 
             <Label Text="GASTOS E INVERSIONES" FontAttributes="Bold"
                    FontFamily="Montserrat-Medium" FontSize="15"/>
@@ -41,42 +41,6 @@
                   StrokeLineCap="Flat" StrokeThickness="2.5" Stroke="black"/>
             
             <!--Esto solo aparece si se ha realizado algún gasto o inversión-->
-            <AbsoluteLayout Margin="0, 25, 0, 5">
-                <Button FontFamily="Montserrat-Medium" BackgroundColor="#DEDEDE"
-                    TextColor="Black" Text="+ 1000.00€                                      01/04/2023" 
-                    CornerRadius="10" Padding="0, 20, 0, 0"
-                    AbsoluteLayout.LayoutBounds="0.5, 0, 320, 67" 
-                    AbsoluteLayout.LayoutFlags="PositionProportional">
-                    <Button.Shadow>
-                        <Shadow Brush="Black"
-                            Offset="10,10"
-                            Radius="10"
-                            Opacity="0.3"/>
-                    </Button.Shadow>
-                </Button>
-                <Label Text="Inversión" FontAttributes="Bold"
-                   FontFamily="Montserrat-Medium"
-                   AbsoluteLayout.LayoutBounds="8, 0.4, 330, 40" 
-                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
-            </AbsoluteLayout>
-            <AbsoluteLayout Margin="0, 25, 0, 5">
-                <Button FontFamily="Montserrat-Medium" BackgroundColor="#DEDEDE"
-                    TextColor="Black" Text="+ 1000.00€                                      01/04/2023" 
-                    CornerRadius="10" Padding="0, 20, 0, 0"
-                    AbsoluteLayout.LayoutBounds="0.5, 0, 320, 67" 
-                    AbsoluteLayout.LayoutFlags="PositionProportional">
-                    <Button.Shadow>
-                        <Shadow Brush="Black"
-                            Offset="10,10"
-                            Radius="10"
-                            Opacity="0.3"/>
-                    </Button.Shadow>
-                </Button>
-                <Label Text="Inversión" FontAttributes="Bold"
-                   FontFamily="Montserrat-Medium"
-                   AbsoluteLayout.LayoutBounds="8, 0.4, 330, 40" 
-                   AbsoluteLayout.LayoutFlags="PositionProportional"/>
-            </AbsoluteLayout>
             <AbsoluteLayout Margin="0, 25, 0, 5">
                 <Button FontFamily="Montserrat-Medium" BackgroundColor="#DEDEDE"
                     TextColor="Black" Text="+ 1000.00€                                      01/04/2023" 

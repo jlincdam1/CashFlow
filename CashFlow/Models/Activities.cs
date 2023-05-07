@@ -12,8 +12,8 @@ namespace CashFlow.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int UserId { get; set; }
-        public string Type { get; set; }
-        public float quantity { get; set; }
+        public string ActType { get; set; }
+        public float Quantity { get; set; }
         public DateTime ActivityDate { get; set; }
     }
 }
