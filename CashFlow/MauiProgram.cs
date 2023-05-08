@@ -19,8 +19,7 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-		builder.Services.AddSingleton<RegisterScreen>();
-		builder.Services.AddSingleton<CashFlowDatabase>();
+        builder.Services.AddSingleton<CashFlowDatabase>();
         return builder.Build();
 	}
 }
