@@ -9,6 +9,11 @@ public partial class GraphicsScreen : ContentPage
         Animacion();
 	}
 
+    protected override bool OnBackButtonPressed()
+    {
+        return true;
+    }
+
     private async void Animacion()
     {
         await Task.WhenAll(

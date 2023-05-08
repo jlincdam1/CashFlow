@@ -16,6 +16,11 @@ namespace CashFlow.PhoneScreens
             Load();
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
         private async void AddInvestAsync(object sender, EventArgs e)
         {
             double inv = Convert.ToDouble(invest.Text, CultureInfo.InvariantCulture);

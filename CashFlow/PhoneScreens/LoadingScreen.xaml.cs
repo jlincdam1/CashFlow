@@ -16,7 +16,12 @@ public partial class LoadingScreen : ContentPage
         NextPage();
     }
 
-	private async void Animacion()
+    protected override bool OnBackButtonPressed()
+    {
+        return true;
+    }
+
+    private async void Animacion()
 	{
         await Task.WhenAll(
                 this.FadeTo(0, 0)
