@@ -1,4 +1,6 @@
-﻿namespace CashFlow;
+﻿using CashFlow.PhoneScreens;
+
+namespace CashFlow;
 
 public partial class App : Application
 {

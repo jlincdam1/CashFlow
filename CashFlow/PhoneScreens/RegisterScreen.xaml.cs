@@ -2,7 +2,7 @@
 using CashFlow.Models;
 using System.Globalization;
 
-namespace CashFlow;
+namespace CashFlow.PhoneScreens;
 
 public partial class RegisterScreen : ContentPage
 {

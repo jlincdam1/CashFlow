@@ -1,7 +1,7 @@
 using CashFlow.Data;
 using CashFlow.Models;
 
-namespace CashFlow;
+namespace CashFlow.PhoneScreens;
 
 public partial class LoadingScreen : ContentPage
 {

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CashFlow.GraphicsData"
              xmlns:dxc="clr-namespace:DevExpress.Maui.Charts;assembly=DevExpress.Maui.Charts"
-             x:Class="CashFlow.GraphicsScreen"
+             x:Class="CashFlow.PhoneScreens.GraphicsScreen"
              BackgroundColor="#ECECEC">
     <ContentPage.BindingContext>
         <local:ActivitiesModel/>

@@ -59,22 +59,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="ActivitiesScreen.xaml.cs">
+	  <Compile Update="PhoneScreens\ActivitiesScreen.xaml.cs">
 	    <DependentUpon>ActivitiesScreen.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="RegisterScreen.xaml.cs">
+	  <Compile Update="PhoneScreens\RegisterScreen.xaml.cs">
 	    <DependentUpon>RegisterScreen.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="ActivitiesScreen.xaml">
+	  <MauiXaml Update="PhoneScreens\ActivitiesScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="GraphicsScreen.xaml">
+	  <MauiXaml Update="PhoneScreens\GraphicsScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="LoadingScreen.xaml">
+	  <MauiXaml Update="PhoneScreens\LoadingScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
