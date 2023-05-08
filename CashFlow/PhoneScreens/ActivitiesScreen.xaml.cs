@@ -1,5 +1,6 @@
 using CashFlow.Data;
 using CashFlow.Models;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 
@@ -86,17 +87,19 @@ namespace CashFlow.PhoneScreens
                 texto = "- " + activity.Quantity + "€";
                 texto = texto.PadRight(50) + activity.ActivityDate.ToShortDateString();
             }
-            AbsoluteLayout element = new AbsoluteLayout { Margin = new Thickness(0, 20, 0, 5), AutomationId = "Movimiento" + activity.Id };
+            AbsoluteLayout element = new AbsoluteLayout { Margin = new Thickness(0, 20, 0, 5), AutomationId = "Movimiento" + activity.Id};
             var content = (StackLayout)FindByName("layout");
             Button button = new Button
             {
+                AutomationId = activity.Id.ToString(),
                 FontFamily = "Montserrat-Medium",
                 BackgroundColor = Color.FromArgb("#DEDEDE"),
                 TextColor = Color.FromRgb(0, 0, 0),
                 Text = texto,
                 CornerRadius = 10,
-                Padding = new Thickness(0, 20, 0, 0)
+                Padding = new Thickness(0, 20, 0, 0),
             };
+            button.Clicked += Acciones;
             button.Shadow = new Shadow()
             {
                 Brush = new SolidColorBrush(Color.FromRgb(0, 0, 0)),
@@ -117,6 +120,22 @@ namespace CashFlow.PhoneScreens
         private async void Button_Clicked(object sender, EventArgs e)
         {
             await database.DeleteAllActivities();
+        }
+
+        private async void Acciones(object sender, EventArgs e)
+        {
+            string opcion = await DisplayActionSheet("Elija una opción", "Salir", null, "Editar", "Eliminar");
+            Button btn = (Button)sender;
+
+            if (opcion == "Editar")
+            {
+                await Navigation.PushAsync(new ActivityEditScreen());
+            }
+            else if (opcion == "Eliminar")
+            {
+                Activities activity = await database.GetActivityAsync(int.Parse(btn.AutomationId));
+                await database.DeleteActivityAsync(activity);
+            }
         }
     }
 }
