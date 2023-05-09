@@ -13,7 +13,7 @@
                     AbsoluteLayout.LayoutBounds="0.07, 0.2, -1, -1" 
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
                 <Entry x:Name="invest" FontSize="17" FontFamily="Montserrat-Medium"
-                    Keyboard="Numeric" MaxLength="10"
+                    Keyboard="Numeric" MaxLength="10" Placeholder="Añada una inversión" PlaceholderColor="Gray"
                     AbsoluteLayout.LayoutBounds="0.5, 1.5, 305, 45"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
             </AbsoluteLayout>
@@ -27,7 +27,7 @@
                     AbsoluteLayout.LayoutBounds="0.07, 0.2, -1, -1" 
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
                 <Entry x:Name="outlay" FontSize="17" FontFamily="Montserrat-Medium"
-                    Keyboard="Numeric" MaxLength="10"
+                    Keyboard="Numeric" MaxLength="10" Placeholder="Añada un gasto" PlaceholderColor="Gray"
                     AbsoluteLayout.LayoutBounds="0.5, 1.5, 305, 45"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
             </AbsoluteLayout>

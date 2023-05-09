@@ -2,11 +2,36 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CashFlow.PhoneScreens.ActivityEditScreen"
-             Title="ActivityEditScreen">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Editar movimiento">
+    <ScrollView>
+        <StackLayout Margin="30, 55, 30, 0">
+            <Label Text="Tipo de movimiento" FontSize="15"/>
+            <Picker Title="Tipo de movimiento" x:Name="tipoMovimiento" Margin="0, 0, 0, 40" FontSize="18">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Inversión</x:String>
+                        <x:String>Gasto</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label Text="Cantidad(€)" FontFamily="Montserrat-Medium"/>
+            <AbsoluteLayout  Margin="0, 10, 0, 40">
+                <BoxView AbsoluteLayout.LayoutBounds="0.5, 0, 330, 40" 
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+	                 Color="LightGray" CornerRadius="5, 5, -1, -1"/>
+                <Entry x:Name="invest" FontSize="17" FontFamily="Montserrat-Medium"
+                    Keyboard="Numeric" MaxLength="10"
+                    AbsoluteLayout.LayoutBounds="0.5, 1.5, 335, 45"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+            </AbsoluteLayout>
+            <Label Text="Fecha del movimiento" FontFamily="Montserrat-Medium"/>
+            <DatePicker  Margin="0, 0, 0, 20"/>
+            <HorizontalStackLayout Margin="0, 50, 0, 10" Spacing="120" HorizontalOptions="Center">
+                <Button Text="Cancelar" FontFamily="Montserrat-Medium" BackgroundColor="LightGray"
+                    TextColor="Black" CornerRadius="10" WidthRequest="100"/>
+                <Button Text="Aceptar" FontFamily="Montserrat-Medium" BackgroundColor="LightGray"
+                    TextColor="Black" CornerRadius="10" WidthRequest="100"/>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
