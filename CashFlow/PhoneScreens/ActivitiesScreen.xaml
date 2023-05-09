@@ -39,7 +39,6 @@
             <Line X1="0" Y1="0" X2="330" Y2="0"
                   HorizontalOptions="CenterAndExpand"
                   StrokeLineCap="Flat" StrokeThickness="2.5" Stroke="black"/>
-            <Button Text="Eliminar" Clicked="Button_Clicked"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

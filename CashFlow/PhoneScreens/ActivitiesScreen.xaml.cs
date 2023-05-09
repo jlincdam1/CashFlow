@@ -24,9 +24,9 @@ namespace CashFlow.PhoneScreens
 
         private async void AddInvestAsync(object sender, EventArgs e)
         {
-            double inv = Convert.ToDouble(invest.Text, CultureInfo.InvariantCulture);
-            if (float.TryParse(invest.Text, out float result) && !inv.ToString().StartsWith("-"))
+            if (float.TryParse(invest.Text, out float result) && invest.Text.StartsWith("-") && !string.IsNullOrWhiteSpace(invest.Text))
             {
+                double inv = Convert.ToDouble(invest.Text, CultureInfo.InvariantCulture);
                 Activities activity = new Activities
                 {
                     ActType = "Inversión",
@@ -35,6 +35,9 @@ namespace CashFlow.PhoneScreens
                 };
                 await database.AddActivityAsync(activity);
                 AddElement(activity);
+                await DisplayAlert("Éxito", "Nueva inversión añadida correctamente", "Aceptar");
+                invest.Text = "";
+                outlay.Text = "";
             }
             else
             {
@@ -44,9 +47,10 @@ namespace CashFlow.PhoneScreens
 
         private async void AddOutlayAsync(object sender, EventArgs e)
         {
-            double outl = Convert.ToDouble(outlay.Text, CultureInfo.InvariantCulture);
-            if (float.TryParse(outlay.Text, out float result) && !outl.ToString().StartsWith("-"))
+            if (float.TryParse(outlay.Text, out float result) && !outlay.Text.StartsWith("-") && !string.IsNullOrWhiteSpace(outlay
+                .Text))
             {
+                double outl = Convert.ToDouble(outlay.Text, CultureInfo.InvariantCulture);
                 Activities activity = new Activities
                 {
                     ActType = "Gasto",
@@ -55,6 +59,9 @@ namespace CashFlow.PhoneScreens
                 };
                 await database.AddActivityAsync(activity);
                 AddElement(activity);
+                await DisplayAlert("Éxito", "Nuevo gasto añadida correctamente", "Aceptar");
+                invest.Text = "";
+                outlay.Text = "";
             }
             else
             {
@@ -87,7 +94,7 @@ namespace CashFlow.PhoneScreens
                 texto = "- " + activity.Quantity + "€";
                 texto = texto.PadRight(50) + activity.ActivityDate.ToShortDateString();
             }
-            AbsoluteLayout element = new AbsoluteLayout { Margin = new Thickness(0, 20, 0, 5), AutomationId = "Movimiento" + activity.Id};
+            AbsoluteLayout element = new AbsoluteLayout { Margin = new Thickness(0, 20, 0, 5)};
             var content = (StackLayout)FindByName("layout");
             Button button = new Button
             {
@@ -117,11 +124,6 @@ namespace CashFlow.PhoneScreens
             content.Children.Add(element);
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            await database.DeleteAllActivities();
-        }
-
         private async void Acciones(object sender, EventArgs e)
         {
             string opcion = await DisplayActionSheet("Elija una opción", "Salir", null, "Editar", "Eliminar");
@@ -135,6 +137,15 @@ namespace CashFlow.PhoneScreens
             {
                 Activities activity = await database.GetActivityAsync(int.Parse(btn.AutomationId));
                 await database.DeleteActivityAsync(activity);
+                var content = (StackLayout)FindByName("layout");
+                for (int i = content.Children.Count - 1; i >= 6; i--)
+                {
+                    content.Children.RemoveAt(i);
+                }
+                Load();
+                await DisplayAlert("Éxito", "Movimiento eliminado correctamente", "Aceptar");
+                invest.Text = "";
+                outlay.Text = "";
             }
         }
     }
