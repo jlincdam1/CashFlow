@@ -9,6 +9,7 @@ namespace CashFlow.PhoneScreens
     public partial class ActivitiesScreen : ContentPage
     {
         private readonly CashFlowDatabase database;
+        public static string buttonId;
         public ActivitiesScreen()
         {
             InitializeComponent();
@@ -131,6 +132,7 @@ namespace CashFlow.PhoneScreens
 
             if (opcion == "Editar")
             {
+                buttonId = btn.AutomationId;
                 await Navigation.PushAsync(new ActivityEditScreen());
             }
             else if (opcion == "Eliminar")
