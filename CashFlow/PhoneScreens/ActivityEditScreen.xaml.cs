@@ -28,4 +28,18 @@ public partial class ActivityEditScreen : ContentPage
 		invest.Text = activity.Quantity.ToString();
 		fechaMov.Date = activity.ActivityDate;
 	}
+
+    private async void CancelAsync(object sender, EventArgs e)
+    {
+        bool respuesta = await DisplayAlert("Título", "¿Desea continuar?", "Sí", "No");
+        if(respuesta)
+        {
+            await Navigation.PopAsync();
+        }
+    }
+
+    private void GuardarCambios(object sender, EventArgs e)
+    {
+
+    }
 }

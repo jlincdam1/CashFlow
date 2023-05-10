@@ -28,9 +28,9 @@
             <DatePicker x:Name="fechaMov" Margin="0, 0, 0, 20" FontSize="18"/>
             <HorizontalStackLayout Margin="0, 50, 0, 10" Spacing="120" HorizontalOptions="Center">
                 <Button Text="Cancelar" FontFamily="Montserrat-Medium" BackgroundColor="LightGray"
-                    TextColor="Black" CornerRadius="10" WidthRequest="100" Opacity="0.8"/>
+                    TextColor="Black" CornerRadius="10" WidthRequest="100" Opacity="0.8" Clicked="CancelAsync"/>
                 <Button Text="Aceptar" FontFamily="Montserrat-Medium" BackgroundColor="LightGray"
-                    TextColor="Black" CornerRadius="10" WidthRequest="100" Opacity="0.8"/>
+                    TextColor="Black" CornerRadius="10" WidthRequest="100" Opacity="0.8" Clicked="GuardarCambios"/>
             </HorizontalStackLayout>
         </StackLayout>
     </ScrollView>
