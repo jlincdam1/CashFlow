@@ -1,5 +1,6 @@
 using CashFlow.Data;
 using CashFlow.Models;
+using System.Globalization;
 
 namespace CashFlow.PhoneScreens;
 
@@ -38,8 +39,25 @@ public partial class ActivityEditScreen : ContentPage
         }
     }
 
-    private void GuardarCambios(object sender, EventArgs e)
+    private async void GuardarCambios(object sender, EventArgs e)
     {
-
+        if(float.TryParse(invest.Text, out float result) && !invest.Text.StartsWith("-") && !string.IsNullOrWhiteSpace(invest.Text))
+        {
+            double inv = Convert.ToDouble(invest.Text, CultureInfo.InvariantCulture);
+            Activities activity = new Activities
+            {
+                Id = int.Parse(ActivitiesScreen.buttonId),
+                ActType = tipoMovimiento.SelectedItem.ToString(),
+                Quantity = (float)Math.Round(inv, 2),
+                ActivityDate = fechaMov.Date
+            };
+            await database.UpdateActivity(activity);
+            await DisplayAlert("Éxito", "Modificado el movimiento correctamente", "Aceptar");
+            await Navigation.PopAsync();
+        }
+        else
+        {
+            await DisplayAlert("Error", "Error, al actualizar, compruebe los datos", "Aceptar");
+        }
     }
 }
