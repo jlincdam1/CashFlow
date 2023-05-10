@@ -15,7 +15,6 @@ namespace CashFlow.PhoneScreens
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             database = new CashFlowDatabase();
-            Load();
         }
 
         protected override bool OnBackButtonPressed()
@@ -149,6 +148,17 @@ namespace CashFlow.PhoneScreens
                 invest.Text = "";
                 outlay.Text = "";
             }
+        }
+
+
+        protected override void OnAppearing()
+        {
+            var content = (StackLayout)FindByName("layout");
+            for (int i = content.Children.Count - 1; i >= 6; i--)
+            {
+                content.Children.RemoveAt(i);
+            }
+            Load();
         }
     }
 }
