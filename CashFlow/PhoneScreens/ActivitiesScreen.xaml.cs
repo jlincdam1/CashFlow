@@ -25,7 +25,7 @@ namespace CashFlow.PhoneScreens
 
         private async void AddInvestAsync(object sender, EventArgs e)
         {
-            if (float.TryParse(invest.Text, out float result) && invest.Text.StartsWith("-") && !string.IsNullOrWhiteSpace(invest.Text))
+            if (float.TryParse(invest.Text, out float result) && !invest.Text.StartsWith("-") && !string.IsNullOrWhiteSpace(invest.Text))
             {
                 double inv = Convert.ToDouble(invest.Text, CultureInfo.InvariantCulture);
                 Activities activity = new Activities

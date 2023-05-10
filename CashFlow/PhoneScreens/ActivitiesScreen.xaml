@@ -8,31 +8,31 @@
             <AbsoluteLayout>
                 <BoxView AbsoluteLayout.LayoutBounds="0.5, 0, 330, 58" 
                      AbsoluteLayout.LayoutFlags="PositionProportional"
-	                 Color="#BCBCBC" CornerRadius="5, 5, -1, -1"/>
+	                 Color="#BCBCBC" CornerRadius="5, 5, -1, -1" Opacity="0.6"/>
                 <Label Text="Inversión" FontFamily="Montserrat-Medium"
                     AbsoluteLayout.LayoutBounds="0.07, 0.2, -1, -1" 
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
                 <Entry x:Name="invest" FontSize="17" FontFamily="Montserrat-Medium"
-                    Keyboard="Numeric" MaxLength="10" Placeholder="Añada una inversión" PlaceholderColor="Gray"
+                    Keyboard="Numeric" MaxLength="12" Placeholder="Añada una inversión" PlaceholderColor="Gray"
                     AbsoluteLayout.LayoutBounds="0.5, 1.5, 305, 45"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
             </AbsoluteLayout>
             <Button Text="+   Añadir" FontFamily="Montserrat-Medium" BackgroundColor="#BCBCBC" Margin="0, 20, 0, 40"
-                    TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End" Clicked="AddInvestAsync"/>
+                    TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End" Clicked="AddInvestAsync" Opacity="0.8"/>
             <AbsoluteLayout>
                 <BoxView AbsoluteLayout.LayoutBounds="0.5, 0, 330, 58" 
                      AbsoluteLayout.LayoutFlags="PositionProportional"
-	                 Color="#BCBCBC" CornerRadius="5, 5, -1, -1"/>
+	                 Color="#BCBCBC" CornerRadius="5, 5, -1, -1" Opacity="0.6"/>
                 <Label Text="Gasto" FontFamily="Montserrat-Medium"
                     AbsoluteLayout.LayoutBounds="0.07, 0.2, -1, -1" 
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
                 <Entry x:Name="outlay" FontSize="17" FontFamily="Montserrat-Medium"
-                    Keyboard="Numeric" MaxLength="10" Placeholder="Añada un gasto" PlaceholderColor="Gray"
+                    Keyboard="Numeric" MaxLength="12" Placeholder="Añada un gasto" PlaceholderColor="Gray"
                     AbsoluteLayout.LayoutBounds="0.5, 1.5, 305, 45"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
             </AbsoluteLayout>
             <Button Text="+   Añadir" FontFamily="Montserrat-Medium" BackgroundColor="#BCBCBC" Margin="0, 20, 0, 40"
-                    TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End" Clicked="AddOutlayAsync"/>
+                    TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End" Clicked="AddOutlayAsync" Opacity="0.8"/>
 
             <Label Text="GASTOS E INVERSIONES" FontAttributes="Bold"
                    FontFamily="Montserrat-Medium" FontSize="15"/>

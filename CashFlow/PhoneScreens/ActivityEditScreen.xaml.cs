@@ -9,6 +9,7 @@ public partial class ActivityEditScreen : ContentPage
     public ActivityEditScreen()
 	{
 		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
         database = new CashFlowDatabase();
 		CargarDatos();
     }
