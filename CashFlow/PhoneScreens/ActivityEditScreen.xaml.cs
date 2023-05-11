@@ -1,6 +1,7 @@
 using CashFlow.Data;
 using CashFlow.Models;
 using System.Globalization;
+using static Android.Graphics.Paint;
 
 namespace CashFlow.PhoneScreens;
 
@@ -44,6 +45,8 @@ public partial class ActivityEditScreen : ContentPage
         if(float.TryParse(invest.Text, out float result) && !invest.Text.StartsWith("-") && !string.IsNullOrWhiteSpace(invest.Text))
         {
             double inv = Convert.ToDouble(invest.Text, CultureInfo.InvariantCulture);
+            User user = await database.GetUserAsync();
+            Activities oldActivity = await database.GetActivityAsync(int.Parse(ActivitiesScreen.buttonId));
             Activities activity = new Activities
             {
                 Id = int.Parse(ActivitiesScreen.buttonId),
@@ -51,6 +54,61 @@ public partial class ActivityEditScreen : ContentPage
                 Quantity = (float)Math.Round(inv, 2),
                 ActivityDate = fechaMov.Date
             };
+            if (activity.ActType == "Gasto" && oldActivity.ActType == "Inversión")
+            {
+                User editedUser = new User
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Surnames = user.Surnames,
+                    InitCapital = user.InitCapital,
+                    Capital = user.Capital - activity.Quantity - oldActivity.Quantity,
+                    MensualEarning = user.MensualEarning
+                };
+                await database.UpdateUserAsync(editedUser);
+            }
+            else if (activity.ActType == "Inversión" && oldActivity.ActType == "Gasto")
+            {
+                User editedUser = new User
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Surnames = user.Surnames,
+                    InitCapital = user.InitCapital,
+                    Capital = user.Capital + activity.Quantity + oldActivity.Quantity,
+                    MensualEarning = user.MensualEarning
+                };
+                await database.UpdateUserAsync(editedUser);
+            }
+            else
+            {
+                if(activity.ActType == "Inversión")
+                {
+                    User editedUser = new User
+                    {
+                        Id = user.Id,
+                        Name = user.Name,
+                        Surnames = user.Surnames,
+                        InitCapital = user.InitCapital,
+                        Capital = user.Capital - oldActivity.Quantity + activity.Quantity,
+                        MensualEarning = user.MensualEarning
+                    };
+                    await database.UpdateUserAsync(editedUser);
+                }
+                else
+                {
+                    User editedUser = new User
+                    {
+                        Id = user.Id,
+                        Name = user.Name,
+                        Surnames = user.Surnames,
+                        InitCapital = user.InitCapital,
+                        Capital = user.Capital + oldActivity.Quantity - activity.Quantity,
+                        MensualEarning = user.MensualEarning
+                    };
+                    await database.UpdateUserAsync(editedUser);
+                }
+            }
             await database.UpdateActivity(activity);
             await DisplayAlert("Éxito", "Modificado el movimiento correctamente", "Aceptar");
             await Navigation.PopAsync();
