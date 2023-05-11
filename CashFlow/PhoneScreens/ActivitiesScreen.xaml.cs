@@ -3,6 +3,7 @@ using CashFlow.Models;
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using static Android.Graphics.Paint;
 
 namespace CashFlow.PhoneScreens
 {
@@ -10,6 +11,7 @@ namespace CashFlow.PhoneScreens
     {
         private readonly CashFlowDatabase database;
         public static string buttonId;
+        private User user;
         public ActivitiesScreen()
         {
             InitializeComponent();
@@ -34,10 +36,13 @@ namespace CashFlow.PhoneScreens
                     ActivityDate = DateTime.Now
                 };
                 await database.AddActivityAsync(activity);
+                UpdateCapital(activity.Quantity, activity);
                 AddElement(activity);
                 await DisplayAlert("Éxito", "Nueva inversión añadida correctamente", "Aceptar");
                 invest.Text = "";
                 outlay.Text = "";
+                user = await database.GetUserAsync();
+                capActual.Text = user.Capital.ToString() + " €";
             }
             else
             {
@@ -58,10 +63,13 @@ namespace CashFlow.PhoneScreens
                     ActivityDate = DateTime.Now
                 };
                 await database.AddActivityAsync(activity);
+                UpdateCapital(activity.Quantity, activity);
                 AddElement(activity);
                 await DisplayAlert("Éxito", "Nuevo gasto añadida correctamente", "Aceptar");
                 invest.Text = "";
                 outlay.Text = "";
+                user = await database.GetUserAsync();
+                capActual.Text = user.Capital.ToString() + " €";
             }
             else
             {
@@ -79,6 +87,8 @@ namespace CashFlow.PhoneScreens
                     AddElement(activity);
                 }
             }
+            user = await database.GetUserAsync();
+            capActual.Text = user.Capital.ToString() + " €";
         }
 
         private void AddElement(Activities activity)
@@ -136,29 +146,69 @@ namespace CashFlow.PhoneScreens
             }
             else if (opcion == "Eliminar")
             {
-                Activities activity = await database.GetActivityAsync(int.Parse(btn.AutomationId));
+                Activities activity = await database.GetActivityAsync(int.Parse(btn.AutomationId));     
                 await database.DeleteActivityAsync(activity);
                 var content = (StackLayout)FindByName("layout");
-                for (int i = content.Children.Count - 1; i >= 6; i--)
+                for (int i = content.Children.Count - 1; i >= 7; i--)
                 {
                     content.Children.RemoveAt(i);
                 }
-                Load();
+                if (activity.ActType == "Inversión")
+                {
+                    activity.ActType = "Gasto";
+                    UpdateCapital(activity.Quantity, activity);
+                }
+                else
+                {
+                    activity.ActType = "Inversión";
+                    UpdateCapital(activity.Quantity, activity);
+                }
                 await DisplayAlert("Éxito", "Movimiento eliminado correctamente", "Aceptar");
                 invest.Text = "";
                 outlay.Text = "";
+                Load();
             }
         }
-
 
         protected override void OnAppearing()
         {
             var content = (StackLayout)FindByName("layout");
-            for (int i = content.Children.Count - 1; i >= 6; i--)
+            for (int i = content.Children.Count - 1; i >= 7; i--)
             {
                 content.Children.RemoveAt(i);
             }
             Load();
+        }
+
+        private async void UpdateCapital(float cap, Activities act)
+        {
+            user = await database.GetUserAsync();
+            if(act.ActType == "Inversión")
+            {
+                User editedUser = new User
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Surnames = user.Surnames,
+                    InitCapital = user.InitCapital,
+                    Capital = user.Capital + cap,
+                    MensualEarning = user.MensualEarning
+                };
+                await database.UpdateUserAsync(editedUser);
+            }
+            else
+            {
+                User editedUser = new User
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Surnames = user.Surnames,
+                    InitCapital = user.InitCapital,
+                    Capital = user.Capital - cap,
+                    MensualEarning = user.MensualEarning
+                };
+                await database.UpdateUserAsync(editedUser);
+            }
         }
     }
 }
