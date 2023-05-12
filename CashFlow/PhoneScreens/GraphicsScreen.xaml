@@ -8,10 +8,9 @@
     <ContentPage.BindingContext>
         <local:ActivitiesModel/>
     </ContentPage.BindingContext>
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <StackLayout>
+            
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
