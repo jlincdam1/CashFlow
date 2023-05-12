@@ -26,6 +26,24 @@
                 <dxc:PieChartView.ChartStyle>
                     <dxc:PieChartStyle Palette="{Binding Palette}" BackgroundColor="#ECECEC"/>
                 </dxc:PieChartView.ChartStyle>
+                <dxc:PieChartView.Hint>
+                    <dxc:PieHint Enabled="True"/>
+                </dxc:PieChartView.Hint>
+                <dxc:PieChartView.Legend>
+                    <dxc:Legend Orientation="TopToBottom"
+                        HorizontalPosition="RightOutside"
+                        VerticalPosition="Bottom">
+                        <dxc:Legend.Style>
+                            <dxc:LegendStyle BorderThickness="2" BorderColor="Gray"
+                                     MarkerSize="17" TextIndent="6" BackgroundColor="#ECECEC"
+                                     ItemsVerticalIndent="14" Padding="8">
+                                <dxc:LegendStyle.TextStyle>
+                                    <dxc:TextStyle Size="12"/>
+                                </dxc:LegendStyle.TextStyle>
+                            </dxc:LegendStyle>
+                        </dxc:Legend.Style>
+                    </dxc:Legend>
+                </dxc:PieChartView.Legend>
             </dxc:PieChartView>
         </StackLayout>
     </ScrollView>
