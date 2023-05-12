@@ -72,7 +72,7 @@ public partial class RegisterScreen : ContentPage
 	private bool entriesRight()
 	{
 		return !string.IsNullOrWhiteSpace(nombre.Text) && !string.IsNullOrWhiteSpace(apellidos.Text) && 
-            float.TryParse(capitalI.Text, out float result);
+            float.TryParse(capitalI.Text, out float result) && !capitalI.Text.StartsWith("-");
 	}
 
     private void on_TextChanged(object sender, TextChangedEventArgs e)
@@ -84,7 +84,7 @@ public partial class RegisterScreen : ContentPage
         }
         else
         {
-            if(entriesRight() && float.TryParse(gananciaM.Text, out float result))
+            if(entriesRight() && float.TryParse(gananciaM.Text, out float result) && !gananciaM.Text.StartsWith("-"))
             {
                 btnRegistro.Opacity = 0.8;
                 btnRegistro.IsEnabled = true;
