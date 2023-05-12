@@ -14,6 +14,7 @@ namespace CashFlow.GraphicsData
         List<Activities> activities = new List<Activities>();
         public float gastos;
         public float inversiones;
+        readonly Color[] palette;
 
         public IReadOnlyList<Movimiento> MovimientosPie { get; }
         public ActivitiesModel() 
@@ -43,7 +44,11 @@ namespace CashFlow.GraphicsData
                 new Movimiento("Gastos", gastos),
                 new Movimiento("Inversiones", inversiones)
             };
+
+            palette = PaletteLoader.LoadPalette("#f45a4e", "#25a966");
         }
+
+        public Color[] Palette => palette;
 
         private async void LoadActivitiesAsync()
         {
@@ -59,6 +64,17 @@ namespace CashFlow.GraphicsData
         {
             this.MovName = actName;
             this.Quantity = quant;
+        }
+    }
+
+    public static class PaletteLoader
+    {
+        public static Color[] LoadPalette(params string[] values)
+        {
+            Color[] colors = new Color[values.Length];
+            for (int i = 0; i < values.Length; i++)
+                colors[i] = Color.FromArgb(values[i]);
+            return colors;
         }
     }
 }
