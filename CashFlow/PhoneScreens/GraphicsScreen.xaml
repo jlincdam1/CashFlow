@@ -10,7 +10,23 @@
     </ContentPage.BindingContext>
     <ScrollView>
         <StackLayout>
-            
+            <dxc:PieChartView SelectionBehavior="Hatch" HeightRequest="230" Margin="15, 10, 15, 10">
+                <dxc:PieChartView.Series>
+                    <dxc:PieSeries>
+                        <dxc:PieSeries.Data>
+                            <dxc:PieSeriesDataAdapter DataSource="{Binding MovimientosPie}"
+                                              LabelDataMember="Movname"
+                                              ValueDataMember="Quantity"/>
+                        </dxc:PieSeries.Data>
+                        <dxc:PieSeries.HintOptions>
+                            <dxc:PieSeriesHintOptions PointTextPattern="{}{L}: {V} €"/>
+                        </dxc:PieSeries.HintOptions>
+                    </dxc:PieSeries>
+                </dxc:PieChartView.Series>
+                <dxc:PieChartView.ChartStyle>
+                    <dxc:PieChartStyle Palette="{Binding Palette}" BackgroundColor="#ECECEC"/>
+                </dxc:PieChartView.ChartStyle>
+            </dxc:PieChartView>
         </StackLayout>
     </ScrollView>
 </ContentPage>
