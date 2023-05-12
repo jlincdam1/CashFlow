@@ -3,7 +3,6 @@ using CashFlow.Models;
 using System;
 using System.Diagnostics;
 using System.Globalization;
-using static Android.Graphics.Paint;
 
 namespace CashFlow.PhoneScreens
 {

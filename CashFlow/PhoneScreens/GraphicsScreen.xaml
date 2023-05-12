@@ -15,7 +15,7 @@
                     <dxc:PieSeries>
                         <dxc:PieSeries.Data>
                             <dxc:PieSeriesDataAdapter DataSource="{Binding MovimientosPie}"
-                                              LabelDataMember="Movname"
+                                              LabelDataMember="MovName"
                                               ValueDataMember="Quantity"/>
                         </dxc:PieSeries.Data>
                         <dxc:PieSeries.HintOptions>

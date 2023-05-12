@@ -11,33 +11,16 @@ namespace CashFlow.GraphicsData
     public class ActivitiesModel
     {
         public readonly CashFlowDatabase database;
-        List<Activities> activities = new List<Activities>();
-        public float gastos;
-        public float inversiones;
-        readonly Color[] palette;
+        public double gastos;
+        public double inversiones;
 
         public IReadOnlyList<Movimiento> MovimientosPie { get; }
         public ActivitiesModel() 
         {
+            database = new CashFlowDatabase();
             gastos = 0;
             inversiones = 0;
-            database = new CashFlowDatabase();
             LoadActivitiesAsync();
-
-            if (activities.Count > 0)
-            {
-                foreach (Activities activity in activities)
-                {
-                    if(activity.ActType == "Inversión")
-                    {
-                        inversiones += activity.Quantity;
-                    }
-                    else
-                    {
-                        gastos += activity.Quantity;
-                    }
-                }
-            }
 
             MovimientosPie = new List<Movimiento>()
             {
@@ -48,19 +31,34 @@ namespace CashFlow.GraphicsData
             palette = PaletteLoader.LoadPalette("#f45a4e", "#25a966");
         }
 
+        readonly Color[] palette;
         public Color[] Palette => palette;
 
         private async void LoadActivitiesAsync()
         {
-            activities = await database.GetActivitiesAsync();
+            List<Activities> activities = await database.GetActivitiesAsync();
+            if (activities.Count > 0)
+            {
+                foreach (Activities activity in activities)
+                {
+                    if (activity.ActType == "Inversión")
+                    {
+                        inversiones += activity.Quantity;
+                    }
+                    else
+                    {
+                        gastos += activity.Quantity;
+                    }
+                }
+            }
         }
     }
     public class Movimiento
     {
         public string MovName { get; }
-        public float Quantity { get; }
+        public double Quantity { get; }
 
-        public Movimiento(string actName, float quant)
+        public Movimiento(string actName, double quant)
         {
             this.MovName = actName;
             this.Quantity = quant;
