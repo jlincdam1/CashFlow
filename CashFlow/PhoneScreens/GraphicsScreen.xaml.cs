@@ -12,6 +12,8 @@ public partial class GraphicsScreen : ContentPage
     public double inversiones;
     public List<Movimiento> MovimientosPie { get; set; }
     public List<Mov> Gastos { get; set; }
+
+    public List<Mov> Inversiones { get; set; }
     public GraphicsScreen()
 	{
         InitializeComponent();
@@ -91,19 +93,39 @@ public partial class GraphicsScreen : ContentPage
             new Mov() { Fecha = new DateTime(2020, 11, 1), Quantity = 0 },
             new Mov() { Fecha = new DateTime(2020, 12, 1), Quantity = 0 },
         };
+        Inversiones = new List<Mov>()
+        {
+            new Mov() { Fecha = new DateTime(2020, 1, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 2, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 3, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 4, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 5, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 6, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 7, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 8, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 9, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 10, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 11, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2020, 12, 1), Quantity = 0 },
+        };
         List<Activities> activities = await database.GetActivitiesAsync();
         if (activities.Count > 0)
         {
             foreach (Activities activity in activities)
             {
+                int mes = activity.ActivityDate.Month;
                 if (activity.ActType == "Gasto")
                 {
-                    int mes = activity.ActivityDate.Month;
                     Gastos[mes - 1].Quantity += activity.Quantity;
+                }
+                else
+                {
+                    Inversiones[mes - 1].Quantity += activity.Quantity;
                 }
             }
         }
         gastosSeries.DataSource = Gastos;
+        inversionesSeries.DataSource = Inversiones;
     }
 
     protected override void OnAppearing()
