@@ -12,7 +12,7 @@ public partial class ActivityEditScreen : ContentPage
 		InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
         database = new CashFlowDatabase();
-        fechaMov.MaximumDate = DateTime.Today;
+        fechaMov.MaximumDate = DateTime.Now;
 		CargarDatos();
     }
 

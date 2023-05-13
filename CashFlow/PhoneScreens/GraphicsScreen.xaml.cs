@@ -15,6 +15,7 @@ public partial class GraphicsScreen : ContentPage
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
         Animacion();
+        mesPie.SelectedItem = DateTime.Now.Month;
         gastos = 0;
         inversiones = 0;
         database = new CashFlowDatabase();
@@ -49,13 +50,16 @@ public partial class GraphicsScreen : ContentPage
         {
             foreach (Activities activity in activities)
             {
-                if (activity.ActType == "Inversión")
+                if(activity.ActivityDate.Month.ToString() == mesPie.SelectedItem.ToString())
                 {
-                    inversiones += activity.Quantity;
-                }
-                else
-                {
-                    gastos += activity.Quantity;
+                    if (activity.ActType == "Inversión")
+                    {
+                        inversiones += activity.Quantity;
+                    }
+                    else
+                    {
+                        gastos += activity.Quantity;
+                    }
                 }
             }
         }
@@ -69,6 +73,12 @@ public partial class GraphicsScreen : ContentPage
     }
 
     protected override void OnAppearing()
+    {
+        LoadActivities();
+        mesPie.SelectedIndexChanged += mesPie_SelectedIndexChanged;
+    }
+
+    private void mesPie_SelectedIndexChanged(object sender, EventArgs e)
     {
         LoadActivities();
     }

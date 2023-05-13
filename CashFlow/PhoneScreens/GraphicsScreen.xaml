@@ -6,6 +6,27 @@
              BackgroundColor="#ECECEC">
     <ScrollView>
         <StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="100, 20, 100, 0">
+                <Label Text="Seleccione el mes: " FontFamily="Montserrat-Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                <Picker Title="Mes" x:Name="mesPie" FontFamily="Montserrat-Medium" HorizontalTextAlignment="Center">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:Int32}">
+                            <x:Int32>1</x:Int32>
+                            <x:Int32>2</x:Int32>
+                            <x:Int32>3</x:Int32>
+                            <x:Int32>4</x:Int32>
+                            <x:Int32>5</x:Int32>
+                            <x:Int32>6</x:Int32>
+                            <x:Int32>7</x:Int32>
+                            <x:Int32>8</x:Int32>
+                            <x:Int32>9</x:Int32>
+                            <x:Int32>10</x:Int32>
+                            <x:Int32>11</x:Int32>
+                            <x:Int32>12</x:Int32>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
             <dxc:PieChartView SelectionBehavior="Hatch" HeightRequest="230" Margin="15, 10, 15, 10">
                 <dxc:PieChartView.Series>
                     <dxc:PieSeries>
@@ -15,7 +36,7 @@
                                               ValueDataMember="Quantity"/>
                         </dxc:PieSeries.Data>
                         <dxc:PieSeries.HintOptions>
-                            <dxc:PieSeriesHintOptions PointTextPattern="{}{L}: {V} €"/>
+                            <dxc:PieSeriesHintOptions PointTextPattern="{}{L}: {V$.##} €"/>
                         </dxc:PieSeries.HintOptions>
                     </dxc:PieSeries>
                 </dxc:PieChartView.Series>
