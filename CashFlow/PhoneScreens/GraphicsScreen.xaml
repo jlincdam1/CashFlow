@@ -74,14 +74,14 @@
 
             <dxc:ChartView HeightRequest="200" Margin="0, 10, 0, 0">
                 <dxc:ChartView.Series>
-                    <dxc:BarSeries PointColorizer="#CC2626">
+                    <dxc:BarSeries PointColorizer="{local:CustomColorizer}">
                         <dxc:BarSeries.Data>
                             <dxc:SeriesDataAdapter x:Name="gastosSeries" ArgumentDataMember="Fecha">
-                                <dxc:ValueDataMember Member="Cantidad" Type="Value" />
+                                <dxc:ValueDataMember Member="Quantity" Type="Value" />
                             </dxc:SeriesDataAdapter>
                         </dxc:BarSeries.Data>
                         <dxc:BarSeries.HintOptions>
-                            <dxc:SeriesHintOptions PointTextPattern="{}{A$YYYY-MM}: {V} €"/>
+                            <dxc:SeriesHintOptions PointTextPattern="{}{A$YYYY-MM}: {V$.##} €"/>
                         </dxc:BarSeries.HintOptions>
                     </dxc:BarSeries>
                 </dxc:ChartView.Series>
