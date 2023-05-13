@@ -49,7 +49,7 @@ namespace CashFlow.Data
         public async Task<List<Activities>> GetActivitiesAsync()
         {
             await Init();
-            return await Database.Table<Activities>().ToListAsync();
+            return await Database.Table<Activities>().OrderByDescending(x => x.ActivityDate).ToListAsync();
         }
         public async Task<Activities> GetActivityAsync(int id)
         {
