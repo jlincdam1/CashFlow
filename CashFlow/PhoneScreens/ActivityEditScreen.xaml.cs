@@ -27,7 +27,7 @@ public partial class ActivityEditScreen : ContentPage
 		{
             tipoMovimiento.SelectedIndex = 1;
         }
-		invest.Text = activity.Quantity.ToString();
+		invest.Text = activity.Quantity.ToString(CultureInfo.InvariantCulture);
 		fechaMov.Date = activity.ActivityDate;
 	}
 
