@@ -40,9 +40,9 @@
             
             <StackLayout Orientation="Horizontal" Margin="25, 50, 25, 10">
                 <Button Text="Cancelar" FontFamily="Montserrat-Medium" BackgroundColor="LightGray" HorizontalOptions="StartAndExpand"
-                    TextColor="Black" CornerRadius="10" WidthRequest="100" Opacity="0.8" Clicked="CancelAsync"/>
+                    TextColor="Black" CornerRadius="10" WidthRequest="100" Opacity="0.8" Clicked="Cancel"/>
                 <Button Text="Guardar" FontFamily="Montserrat-Medium" BackgroundColor="LightGray"
-                    TextColor="Black" CornerRadius="10" WidthRequest="100" Opacity="0.8" Clicked="GuardarCambios"/>
+                    TextColor="Black" CornerRadius="10" WidthRequest="100" Opacity="0.8" Clicked="Save"/>
             </StackLayout>
         </StackLayout>
     </ScrollView>
