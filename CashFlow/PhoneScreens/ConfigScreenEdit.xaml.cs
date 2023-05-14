@@ -52,6 +52,8 @@ public partial class ConfigScreenEdit : ContentPage
                 MensualEarning = (float)Math.Round(menE, 2)
             };
             await database.UpdateUserAsync(user);
+            await DisplayAlert("Éxito", "Modificado el movimiento correctamente", "Aceptar");
+            await Navigation.PopAsync();
         }
         else
         {
