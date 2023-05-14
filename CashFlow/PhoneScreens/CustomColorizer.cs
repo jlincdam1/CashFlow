@@ -11,7 +11,7 @@ namespace CashFlow.PhoneScreens
     {
         Color ICustomPointColorizer.GetColor(ColoredPointInfo info)
         {
-            return Color.FromHex("#CC2626");
+            return Color.FromArgb("#CC2626");
         }
         public ILegendItemProvider GetLegendItemProvider()
         {

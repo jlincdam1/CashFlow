@@ -1,7 +1,6 @@
 using CashFlow.Data;
 using CashFlow.Models;
 using System.Globalization;
-using static Android.Text.Method.TextKeyListener;
 
 namespace CashFlow.PhoneScreens;
 
