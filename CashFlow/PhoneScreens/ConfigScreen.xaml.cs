@@ -32,9 +32,9 @@ public partial class ConfigScreen : ContentPage
         LoadData();
     }
 
-    private void EditProfile(object sender, EventArgs e)
+    private async void EditProfileAsync(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new ConfigScreenEdit());
     }
 
     private void DeleteUser(object sender, EventArgs e)
