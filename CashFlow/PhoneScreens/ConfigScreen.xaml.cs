@@ -37,8 +37,14 @@ public partial class ConfigScreen : ContentPage
         await Navigation.PushAsync(new ConfigScreenEdit());
     }
 
-    private void DeleteUser(object sender, EventArgs e)
+    private async void DeleteUser(object sender, EventArgs e)
     {
-
+        bool respuesta = await DisplayAlert("Eliminar usuario", "Al eliminar el usuario también se eliminarán todos sus movimientos. ¿Quiere continuear?", "Sí", "No");
+        if (respuesta)
+        {
+            await database.DeleteUserAsync();
+            await database.DeleteAllActivities();
+            await DisplayAlert("Elminado todo", "Se ha eliminado el usuario junto a todos sus movimientos", "Aceptar");
+        }
     }
 }
