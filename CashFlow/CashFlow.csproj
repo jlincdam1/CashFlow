@@ -74,6 +74,9 @@
 	  <MauiXaml Update="PhoneScreens\ActivityEditScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PhoneScreens\ConfigScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PhoneScreens\GraphicsScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
