@@ -14,6 +14,10 @@ public partial class GraphicsScreen : ContentPage
     public List<Mov> Gastos { get; set; }
 
     public List<Mov> Inversiones { get; set; }
+
+    public Act MovIngresos { get; set; }
+    public Act MovGastos { get; set; }
+
     public GraphicsScreen()
 	{
         InitializeComponent();
@@ -128,10 +132,70 @@ public partial class GraphicsScreen : ContentPage
         inversionesSeries.DataSource = Inversiones;
     }
 
+    private async void LoadComparacion()
+    {
+        MovIngresos = new Act(
+                "Ingresos",
+                new ActValues(new DateTime(2020, 1, 1), 0),
+                new ActValues(new DateTime(2020, 2, 1), 0),
+                new ActValues(new DateTime(2020, 3, 1), 0),
+                new ActValues(new DateTime(2020, 4, 1), 0),
+                new ActValues(new DateTime(2020, 5, 1), 0),
+                new ActValues(new DateTime(2020, 6, 1), 0),
+                new ActValues(new DateTime(2020, 7, 1), 0),
+                new ActValues(new DateTime(2020, 8, 1), 0),
+                new ActValues(new DateTime(2020, 9, 1), 0),
+                new ActValues(new DateTime(2020, 10, 1), 0),
+                new ActValues(new DateTime(2020, 11, 1), 0),
+                new ActValues(new DateTime(2020, 12, 1), 0));
+
+        MovGastos = new Act(
+            "Gastos",
+            new ActValues(new DateTime(2020, 1, 1), 0),
+            new ActValues(new DateTime(2020, 2, 1), 0),
+            new ActValues(new DateTime(2020, 3, 1), 0),
+            new ActValues(new DateTime(2020, 4, 1), 0),
+            new ActValues(new DateTime(2020, 5, 1), 0),
+            new ActValues(new DateTime(2020, 6, 1), 0),
+            new ActValues(new DateTime(2020, 7, 1), 0),
+            new ActValues(new DateTime(2020, 8, 1), 0),
+            new ActValues(new DateTime(2020, 9, 1), 0),
+            new ActValues(new DateTime(2020, 10, 1), 0),
+            new ActValues(new DateTime(2020, 11, 1), 0),
+            new ActValues(new DateTime(2020, 12, 1), 0));
+        List<Activities> activities = await database.GetActivitiesAsync();
+        if (activities.Count > 0)
+        {
+            foreach (Activities activity in activities)
+            {
+                int mes = activity.ActivityDate.Month;
+                foreach(ActValues a in MovGastos.Values)
+                {
+                    if (activity.ActType == "Gasto" && a.Date.Month == mes)
+                    {
+                        a.Quantity += activity.Quantity;
+                    }
+                }
+                foreach (ActValues a in MovIngresos.Values)
+                {
+                    if (activity.ActType == "Inversión" && a.Date.Month == mes)
+                    {
+                        a.Quantity += activity.Quantity;
+                    }
+                }
+            }
+        }
+        nombreIngresos.DisplayName = MovIngresos.Tipo;
+        ingresosDatos.DataSource = MovIngresos.Values;
+        nombreGastos.DisplayName = MovGastos.Tipo;
+        gastosDatos.DataSource = MovGastos.Values;
+    }
+
     protected override void OnAppearing()
     {
         LoadActivities();
         LoadGastosSeries();
+        LoadComparacion();
         mesPie.SelectedIndexChanged += mesPie_SelectedIndexChanged;
     }
 
@@ -167,5 +231,30 @@ public static class PaletteLoader
         for (int i = 0; i < values.Length; i++)
             colors[i] = Color.FromArgb(values[i]);
         return colors;
+    }
+}
+
+// Para la gráfica de comparación
+public class Act
+{
+    public string Tipo { get; }
+    public IList<ActValues> Values { get; }
+
+    public Act(string mov, params ActValues[] values)
+    {
+        this.Tipo = mov;
+        this.Values = new List<ActValues>(values);
+    }
+}
+
+public class ActValues
+{
+    public DateTime Date { get; }
+    public double Quantity { get; set; }
+
+    public ActValues(DateTime month, double value)
+    {
+        this.Date = month;
+        this.Quantity = value;
     }
 }

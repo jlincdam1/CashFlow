@@ -133,6 +133,78 @@
                     <dxc:Hint Enabled="True"/>
                 </dxc:ChartView.Hint>
             </dxc:ChartView>
+
+            <dxc:ChartView HeightRequest="350" Margin="0, 20, 0, 20">
+                <dxc:ChartView.Series>
+                    <dxc:LineSeries x:Name="nombreIngresos"
+                                    HintOptions="{StaticResource lineSeriesHintOptions}"
+                                    MarkersVisible="True">
+                        <dxc:LineSeries.Data>
+                            <dxc:SeriesDataAdapter x:Name="ingresosDatos"
+                                           ArgumentDataMember="Date">
+                                <dxc:ValueDataMember Type="Value" Member="Quantity"/>
+                            </dxc:SeriesDataAdapter>
+                        </dxc:LineSeries.Data>
+                        <dxc:LineSeries.Style>
+                            <dxc:LineSeriesStyle Stroke="Green" StrokeThickness="2" MarkerSize="7">
+                                <dxc:LineSeriesStyle.MarkerStyle>
+                                    <dxc:MarkerStyle Fill="Green"/>
+                                </dxc:LineSeriesStyle.MarkerStyle>
+                            </dxc:LineSeriesStyle>
+                        </dxc:LineSeries.Style>
+                    </dxc:LineSeries>
+                    <dxc:LineSeries x:Name="nombreGastos"
+                            HintOptions="{StaticResource lineSeriesHintOptions}"
+                            MarkersVisible="True">
+                        <dxc:LineSeries.Data>
+                            <dxc:SeriesDataAdapter x:Name="gastosDatos"
+                                           ArgumentDataMember="Date">
+                                <dxc:ValueDataMember Type="Value" Member="Quantity"/>
+                            </dxc:SeriesDataAdapter>
+                        </dxc:LineSeries.Data>
+                        <dxc:LineSeries.Style>
+                            <dxc:LineSeriesStyle Stroke="Red" StrokeThickness="2" MarkerSize="7">
+                                <dxc:LineSeriesStyle.MarkerStyle>
+                                    <dxc:MarkerStyle Fill="Red"/>
+                                </dxc:LineSeriesStyle.MarkerStyle>
+                            </dxc:LineSeriesStyle>
+                        </dxc:LineSeries.Style>
+                    </dxc:LineSeries>
+                </dxc:ChartView.Series>
+                <dxc:ChartView.AxisX>
+                    <dxc:DateTimeAxisX Style="{StaticResource axisStyle}" MeasureUnit="Month" GridSpacing="1">
+                        <dxc:DateTimeAxisX.LabelTextFormatter>
+                            <local:AxisLabelTextFormatter/>
+                        </dxc:DateTimeAxisX.LabelTextFormatter>
+                    </dxc:DateTimeAxisX>
+                </dxc:ChartView.AxisX>
+                <dxc:ChartView.AxisY>
+                    <dxc:NumericAxisY Style="{StaticResource axisStyle}"/>
+                </dxc:ChartView.AxisY>
+                <dxc:ChartView.Legend>
+                    <dxc:Legend VerticalPosition="BottomOutside" 
+                        HorizontalPosition="Center" 
+                        Orientation="LeftToRight">
+                        <dxc:Legend.Style>
+                            <dxc:LegendStyle BackgroundColor="LightGray">
+                                <dxc:LegendStyle.TextStyle>
+                                    <dxc:TextStyle Size="12"/>
+                                </dxc:LegendStyle.TextStyle>
+                            </dxc:LegendStyle>
+                        </dxc:Legend.Style>
+                    </dxc:Legend>
+                </dxc:ChartView.Legend>
+                <dxc:ChartView.Hint>
+                    <dxc:Hint>
+                        <dxc:Hint.Behavior>
+                            <dxc:TooltipHintBehavior ShowPointTooltip="True" ShowSeriesTooltip="False"/>
+                        </dxc:Hint.Behavior>
+                    </dxc:Hint>
+                </dxc:ChartView.Hint>
+                <dxc:ChartView.ChartStyle>
+                    <dxc:ChartStyle BackgroundColor="LightGray"/>
+                </dxc:ChartView.ChartStyle>
+            </dxc:ChartView>
         </StackLayout>
     </ScrollView>
 </ContentPage>
