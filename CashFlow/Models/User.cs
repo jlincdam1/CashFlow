@@ -16,5 +16,7 @@ namespace CashFlow.Models
         public float InitCapital { get; set; }
         public float Capital { get; set; }
         public float MensualEarning { get; set; }
+        public string NamePrivkey { get; set; }
+        public string SurnamesPrivKey { get; set; }
     }
 }

@@ -21,8 +21,8 @@ public partial class ConfigScreen : ContentPage
     private async void LoadData()
     {
         User user = await database.GetUserAsync();
-        nombre.Text = RSAUtils.Desencriptar(RegisterScreen.namePrivKey, user.Name);
-        apellidos.Text = RSAUtils.Desencriptar(RegisterScreen.surnamesPrivKey, user.Surnames);
+        nombre.Text = RSAUtils.Desencriptar(user.NamePrivkey, user.Name);
+        apellidos.Text = RSAUtils.Desencriptar(user.SurnamesPrivKey, user.Surnames);
         capital.Text = user.Capital.ToString(CultureInfo.InvariantCulture);
         gananciaM.Text = user.MensualEarning.ToString(CultureInfo.InvariantCulture);
     }

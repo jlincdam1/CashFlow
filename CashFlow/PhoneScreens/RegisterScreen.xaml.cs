@@ -7,8 +7,8 @@ namespace CashFlow.PhoneScreens;
 public partial class RegisterScreen : ContentPage
 {
     private readonly CashFlowDatabase database;
-    public static string namePrivKey;
-    public static string surnamesPrivKey;
+    public string namePrivKey;
+    public string surnamesPrivKey;
 	public RegisterScreen()
 	{
 		InitializeComponent();
@@ -16,7 +16,24 @@ public partial class RegisterScreen : ContentPage
         database = new CashFlowDatabase();
 	}
 
-	async void Registrarse(object sender, EventArgs e)
+    private async void CheckUser()
+    {
+        User user = await database.GetUserAsync();
+        if (user != null)
+        {
+            await Task.WhenAll(
+                this.FadeTo(0, 0)
+            );
+            await Navigation.PushAsync(new LoadingScreen());
+        }
+    }
+
+    protected override void OnAppearing()
+    {
+        CheckUser();
+    }
+
+    async void Registrarse(object sender, EventArgs e)
 	{
         await btnRegistro.ScaleTo(0.8, 50);
         await btnRegistro.ScaleTo(1, 50);
@@ -36,7 +53,9 @@ public partial class RegisterScreen : ContentPage
                 Name = nombreEncriptado,
                 Surnames = apellidosEncriptado,
                 InitCapital = (float)Math.Round(capI, 2),
-                Capital = (float)Math.Round(capI, 2)
+                Capital = (float)Math.Round(capI, 2),
+                NamePrivkey = namePrivKey,
+                SurnamesPrivKey = surnamesPrivKey
             };
         }
         else
@@ -49,7 +68,9 @@ public partial class RegisterScreen : ContentPage
                 Surnames = apellidosEncriptado,
                 InitCapital = (float)Math.Round(capI, 2),
                 Capital = (float)Math.Round(capI, 2),
-                MensualEarning = (float)Math.Round(menE, 2)
+                MensualEarning = (float)Math.Round(menE, 2),
+                NamePrivkey = namePrivKey,
+                SurnamesPrivKey = surnamesPrivKey
             };
         }
 

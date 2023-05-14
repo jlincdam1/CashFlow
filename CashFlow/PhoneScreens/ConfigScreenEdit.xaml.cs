@@ -17,8 +17,8 @@ public partial class ConfigScreenEdit : ContentPage
     private async void LoadData()
     {
         User user = await database.GetUserAsync();
-        name.Text = RSAUtils.Desencriptar(RegisterScreen.namePrivKey, user.Name);
-        surnames.Text = RSAUtils.Desencriptar(RegisterScreen.surnamesPrivKey, user.Surnames);
+        name.Text = RSAUtils.Desencriptar(user.NamePrivkey, user.Name);
+        surnames.Text = RSAUtils.Desencriptar(user.SurnamesPrivKey, user.Surnames);
         mensualEarning.Text = user.MensualEarning.ToString(CultureInfo.InvariantCulture);
     }
 
@@ -37,9 +37,9 @@ public partial class ConfigScreenEdit : ContentPage
         {
             User oldUser = await database.GetUserAsync();
             string nombreEncriptado = RSAUtils.encriptar(name.Text.Trim());
-            RegisterScreen.namePrivKey = RSAUtils.privKeyStr;
+
             string apellidosEncriptado = RSAUtils.encriptar(surnames.Text.Trim());
-            RegisterScreen.surnamesPrivKey = RSAUtils.privKeyStr;
+
             double menE = Convert.ToDouble(mensualEarning.Text, CultureInfo.InvariantCulture);
             User user = new User()
             {

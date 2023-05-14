@@ -34,7 +34,7 @@ public partial class LoadingScreen : ContentPage
     private async void Bienvenida()
     {
         User user = await database.GetUserAsync();
-        string nombreDesencriptado = RSAUtils.Desencriptar(RegisterScreen.namePrivKey, user.Name);
+        string nombreDesencriptado = RSAUtils.Desencriptar(user.NamePrivkey, user.Name);
         bienvenida.Text = "¡BIENVENIDO " + nombreDesencriptado.ToUpper() + "!";
     }
 
