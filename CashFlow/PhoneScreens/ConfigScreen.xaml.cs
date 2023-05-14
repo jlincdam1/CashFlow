@@ -8,11 +8,10 @@ public partial class ConfigScreen : ContentPage
 {
     private readonly CashFlowDatabase database;
     public ConfigScreen()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
         database = new CashFlowDatabase();
-        LoadData();
     }
     protected override bool OnBackButtonPressed()
     {
@@ -28,4 +27,18 @@ public partial class ConfigScreen : ContentPage
         gananciaM.Text = user.MensualEarning.ToString(CultureInfo.InvariantCulture);
     }
 
+    protected override void OnAppearing()
+    {
+        LoadData();
+    }
+
+    private void EditProfile(object sender, EventArgs e)
+    {
+
+    }
+
+    private void DeleteUser(object sender, EventArgs e)
+    {
+
+    }
 }
