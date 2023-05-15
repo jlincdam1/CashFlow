@@ -60,7 +60,6 @@
                     Margin="10, 25, 10, 5"
 					TextColor="#000000"
 					Text="Una vez registrado, la próxima vez que entre a la aplicación, accederá directamente al Inicio de CashFlow, recuerde que todo se guarda en el local"/>
-            <Button Text="eliminar" Clicked="Button_Clicked"/>
         </StackLayout>
     </ScrollView>
 

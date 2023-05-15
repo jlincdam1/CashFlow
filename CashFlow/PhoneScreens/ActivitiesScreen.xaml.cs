@@ -55,20 +55,28 @@ namespace CashFlow.PhoneScreens
                 .Text))
             {
                 double outl = Convert.ToDouble(outlay.Text, CultureInfo.InvariantCulture);
-                Activities activity = new Activities
-                {
-                    ActType = "Gasto",
-                    Quantity = (float)Math.Round(outl, 2),
-                    ActivityDate = DateTime.Now
-                };
-                await database.AddActivityAsync(activity);
-                UpdateCapital(activity.Quantity, activity);
-                AddElement(activity);
-                await DisplayAlert("Éxito", "Nuevo gasto añadida correctamente", "Aceptar");
-                invest.Text = "";
-                outlay.Text = "";
                 user = await database.GetUserAsync();
-                capActual.Text = user.Capital.ToString() + " €";
+                if (outl < user.Capital)
+                {
+                    Activities activity = new Activities
+                    {
+                        ActType = "Gasto",
+                        Quantity = (float)Math.Round(outl, 2),
+                        ActivityDate = DateTime.Now
+                    };
+                    await database.AddActivityAsync(activity);
+                    UpdateCapital(activity.Quantity, activity);
+                    AddElement(activity);
+                    await DisplayAlert("Éxito", "Nuevo gasto añadida correctamente", "Aceptar");
+                    invest.Text = "";
+                    outlay.Text = "";
+                    user = await database.GetUserAsync();
+                    capActual.Text = user.Capital.ToString() + " €";
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Error, no le queda suficiente capital", "Aceptar");
+                }
             }
             else
             {

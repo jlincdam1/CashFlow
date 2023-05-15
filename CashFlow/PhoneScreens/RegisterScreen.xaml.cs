@@ -117,10 +117,5 @@ public partial class RegisterScreen : ContentPage
             }
         }
     }
-
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-        await database.DeleteUserAsync();
-    }
 }
 
