@@ -11,7 +11,7 @@
             <ShellContent ContentTemplate="{DataTemplate local:GraphicsScreen}">
                 <Shell.TitleView>
                     <StackLayout Orientation="Horizontal" Margin="0, 0, 15, 0">
-                        <ImageButton Source="leave.png" WidthRequest="35" HorizontalOptions="Start"/>
+                        <ImageButton Source="leave.png" WidthRequest="35" HorizontalOptions="Start" Clicked="Salir"/>
                         <Label Text="GRÁFICAS" TextColor="Black" FontSize="20"  FontFamily="Montserrat-Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
                         <Image Source="cashflowicon.png" WidthRequest="55" HorizontalOptions="End"/>
                     </StackLayout>
@@ -22,7 +22,7 @@
             <ShellContent ContentTemplate="{DataTemplate local:ActivitiesScreen}">
                 <Shell.TitleView>
                     <StackLayout Orientation="Horizontal" Margin="0, 0, 15, 0">
-                        <ImageButton Source="leave.png" WidthRequest="35" HorizontalOptions="Start"/>
+                        <ImageButton Source="leave.png" WidthRequest="35" HorizontalOptions="Start" Clicked="Salir"/>
                         <Label Text="GASTOS E INVERSIONES" TextColor="Black" FontSize="20"  FontFamily="Montserrat-Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
                         <Image Source="cashflowicon.png" WidthRequest="55" HorizontalOptions="End"/>
                     </StackLayout>
@@ -33,7 +33,7 @@
             <ShellContent ContentTemplate="{DataTemplate local:ConfigScreen}">
                 <Shell.TitleView>
                     <StackLayout Orientation="Horizontal" Margin="0, 0, 15, 0">
-                        <ImageButton Source="leave.png" WidthRequest="35" HorizontalOptions="Start"/>
+                        <ImageButton Source="leave.png" WidthRequest="35" HorizontalOptions="Start" Clicked="Salir"/>
                         <Label Text="AJUSTES" TextColor="Black" FontSize="20"  FontFamily="Montserrat-Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
                         <Image Source="cashflowicon.png" WidthRequest="55" HorizontalOptions="End"/>
                     </StackLayout>
