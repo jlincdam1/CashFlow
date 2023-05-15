@@ -45,6 +45,7 @@ public partial class ConfigScreen : ContentPage
             await database.DeleteUserAsync();
             await database.DeleteAllActivities();
             await DisplayAlert("Elminado todo", "Se ha eliminado el usuario junto a todos sus movimientos", "Aceptar");
+            await Navigation.PushAsync(new RegisterScreen());
         }
     }
 }
