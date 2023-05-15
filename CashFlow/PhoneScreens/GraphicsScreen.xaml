@@ -15,7 +15,9 @@
     </ContentPage.Resources>
     <ScrollView>
         <StackLayout>
-            <StackLayout Orientation="Horizontal" Margin="100, 20, 100, 0">
+            <Label Text="Añada inversiones y gastos para visualizarlos en las gráficas. Todas las gráficas muestran datos de este año" 
+                   HorizontalOptions="Center" TextColor="Gray" Padding="20" FontSize="12"/>
+            <StackLayout Orientation="Horizontal" Margin="100, 0, 100, 0">
                 <Label Text="Seleccione el mes: " FontFamily="Montserrat-Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
                 <Picker Title="Mes" x:Name="mesPie" FontFamily="Montserrat-Medium" HorizontalTextAlignment="Center">
                     <Picker.ItemsSource>
@@ -72,7 +74,8 @@
                 </dxc:PieChartView.Legend>
             </dxc:PieChartView>
 
-            <dxc:ChartView HeightRequest="200" Margin="0, 10, 0, 0">
+            <Label Text="Gráficas de barras de gastos e inversiones mensuales" FontAttributes="Bold" HorizontalOptions="Center" Padding="20" Margin="0, 40, 0, 0"/>
+            <dxc:ChartView HeightRequest="200">
                 <dxc:ChartView.Series>
                     <dxc:BarSeries PointColorizer="{local:CustomColorizer}">
                         <dxc:BarSeries.Data>
@@ -103,7 +106,6 @@
                 </dxc:ChartView.Hint>
             </dxc:ChartView>
 
-            
             <dxc:ChartView HeightRequest="200" Margin="0, 10, 0, 0">
                 <dxc:ChartView.Series>
                     <dxc:BarSeries PointColorizer="{local:CustomColorizer2}">
@@ -135,6 +137,7 @@
                 </dxc:ChartView.Hint>
             </dxc:ChartView>
 
+            <Label Text="Gráfica de comparación de gastos e inversiones" FontAttributes="Bold" HorizontalOptions="Center" Padding="20" Margin="0, 40, 0, 0"/>
             <dxc:ChartView HeightRequest="350" Margin="0, 20, 0, 20">
                 <dxc:ChartView.Series>
                     <dxc:LineSeries x:Name="nombreIngresos"

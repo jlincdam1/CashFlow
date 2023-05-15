@@ -57,7 +57,7 @@ public partial class GraphicsScreen : ContentPage
         {
             foreach (Activities activity in activities)
             {
-                if(activity.ActivityDate.Month.ToString() == mesPie.SelectedItem.ToString())
+                if(activity.ActivityDate.Month.ToString() == mesPie.SelectedItem.ToString() && activity.ActivityDate.Year == DateTime.Now.Year)
                 {
                     if (activity.ActType == "Inversión")
                     {
@@ -83,33 +83,33 @@ public partial class GraphicsScreen : ContentPage
     {
         Gastos = new List<Mov>()
         {
-            new Mov() { Fecha = new DateTime(0000, 1, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 2, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 3, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 4, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 5, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 6, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 7, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 8, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 9, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 10, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 11, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 12, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 1, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 2, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 3, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 4, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 5, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 6, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 7, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 8, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 9, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 10, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 11, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 12, 1), Quantity = 0 },
         };
         Inversiones = new List<Mov>()
         {
-            new Mov() { Fecha = new DateTime(0000, 1, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 2, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 3, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 4, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 5, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 6, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 7, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 8, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 9, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 10, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 11, 1), Quantity = 0 },
-            new Mov() { Fecha = new DateTime(0000, 12, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 1, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 2, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 3, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 4, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 5, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 6, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 7, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 8, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 9, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 10, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 11, 1), Quantity = 0 },
+            new Mov() { Fecha = new DateTime(2023, 12, 1), Quantity = 0 },
         };
         List<Activities> activities = await database.GetActivitiesAsync();
         if (activities.Count > 0)
@@ -138,33 +138,33 @@ public partial class GraphicsScreen : ContentPage
     {
         MovIngresos = new Act(
                 "Ingresos",
-                new ActValues(new DateTime(0000, 1, 1), 0),
-                new ActValues(new DateTime(0000, 2, 1), 0),
-                new ActValues(new DateTime(0000, 3, 1), 0),
-                new ActValues(new DateTime(0000, 4, 1), 0),
-                new ActValues(new DateTime(0000, 5, 1), 0),
-                new ActValues(new DateTime(0000, 6, 1), 0),
-                new ActValues(new DateTime(0000, 7, 1), 0),
-                new ActValues(new DateTime(0000, 8, 1), 0),
-                new ActValues(new DateTime(0000, 9, 1), 0),
-                new ActValues(new DateTime(0000, 10, 1), 0),
-                new ActValues(new DateTime(0000, 11, 1), 0),
-                new ActValues(new DateTime(0000, 12, 1), 0));
+                new ActValues(new DateTime(2023, 1, 1), 0),
+                new ActValues(new DateTime(2023, 2, 1), 0),
+                new ActValues(new DateTime(2023, 3, 1), 0),
+                new ActValues(new DateTime(2023, 4, 1), 0),
+                new ActValues(new DateTime(2023, 5, 1), 0),
+                new ActValues(new DateTime(2023, 6, 1), 0),
+                new ActValues(new DateTime(2023, 7, 1), 0),
+                new ActValues(new DateTime(2023, 8, 1), 0),
+                new ActValues(new DateTime(2023, 9, 1), 0),
+                new ActValues(new DateTime(2023, 10, 1), 0),
+                new ActValues(new DateTime(2023, 11, 1), 0),
+                new ActValues(new DateTime(2023, 12, 1), 0));
 
         MovGastos = new Act(
             "Gastos",
-            new ActValues(new DateTime(0000, 1, 1), 0),
-            new ActValues(new DateTime(0000, 2, 1), 0),
-            new ActValues(new DateTime(0000, 3, 1), 0),
-            new ActValues(new DateTime(0000, 4, 1), 0),
-            new ActValues(new DateTime(0000, 5, 1), 0),
-            new ActValues(new DateTime(0000, 6, 1), 0),
-            new ActValues(new DateTime(0000, 7, 1), 0),
-            new ActValues(new DateTime(0000, 8, 1), 0),
-            new ActValues(new DateTime(0000, 9, 1), 0),
-            new ActValues(new DateTime(0000, 10, 1), 0),
-            new ActValues(new DateTime(0000, 11, 1), 0),
-            new ActValues(new DateTime(0000, 12, 1), 0));
+            new ActValues(new DateTime(2023, 1, 1), 0),
+            new ActValues(new DateTime(2023, 2, 1), 0),
+            new ActValues(new DateTime(2023, 3, 1), 0),
+            new ActValues(new DateTime(2023, 4, 1), 0),
+            new ActValues(new DateTime(2023, 5, 1), 0),
+            new ActValues(new DateTime(2023, 6, 1), 0),
+            new ActValues(new DateTime(2023, 7, 1), 0),
+            new ActValues(new DateTime(2023, 8, 1), 0),
+            new ActValues(new DateTime(2023, 9, 1), 0),
+            new ActValues(new DateTime(2023, 10, 1), 0),
+            new ActValues(new DateTime(2023, 11, 1), 0),
+            new ActValues(new DateTime(2023, 12, 1), 0));
         List<Activities> activities = await database.GetActivitiesAsync();
         if (activities.Count > 0)
         {
