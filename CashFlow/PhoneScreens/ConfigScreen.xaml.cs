@@ -37,6 +37,29 @@ public partial class ConfigScreen : ContentPage
         await Navigation.PushAsync(new ConfigScreenEdit());
     }
 
+    private async void DeleteActivities(object sender, EventArgs e)
+    {
+        bool respuesta = await DisplayAlert("Eliminar movimientos", "Está a punto de eliminar todos los movimientos de la cuenta. ¿Quiere continuear?", "Sí", "No");
+        if (respuesta)
+        {
+            await database.DeleteAllActivities();
+            User oldUser = await database.GetUserAsync();
+            User user = new User()
+            {
+                Id = oldUser.Id,
+                Name = oldUser.Name,
+                Surnames = oldUser.Surnames,
+                InitCapital = oldUser.InitCapital,
+                Capital = oldUser.InitCapital,
+                NamePrivkey = oldUser.NamePrivkey,
+                SurnamesPrivKey = oldUser.SurnamesPrivKey
+            };
+            await database.UpdateUserAsync(user);
+            capital.Text = user.Capital.ToString(CultureInfo.InvariantCulture);
+            await DisplayAlert("Elminado", "Se han eliminado todos los movimientos que existían", "Aceptar");
+        }
+    }
+
     private async void DeleteUser(object sender, EventArgs e)
     {
         bool respuesta = await DisplayAlert("Eliminar usuario", "Al eliminar el usuario también se eliminarán todos sus movimientos. ¿Quiere continuear?", "Sí", "No");
