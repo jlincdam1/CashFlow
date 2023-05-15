@@ -27,7 +27,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\cashflowicon.png" />
+		<MauiIcon Include="Resources\AppIcon\cashflowicon.png"/>
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#68DF8C" BaseSize="128,128" />
