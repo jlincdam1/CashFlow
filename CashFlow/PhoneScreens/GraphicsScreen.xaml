@@ -72,6 +72,14 @@
                 </dxc:PieChartView.Legend>
             </dxc:PieChartView>
 
+            <StackLayout Orientation="Horizontal" Margin="100, 20, 100, 0">
+                <Label Text="Seleccione el año: " FontFamily="Montserrat-Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                <Picker Title="Año" x:Name="yearBar" FontFamily="Montserrat-Medium" HorizontalTextAlignment="Center">
+                    <Picker.ItemsSource>
+                        <x:Array x:Name="yearsBar" Type="{x:Type x:Int32}"/>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
             <dxc:ChartView HeightRequest="200" Margin="0, 10, 0, 0">
                 <dxc:ChartView.Series>
                     <dxc:BarSeries PointColorizer="{local:CustomColorizer}">
@@ -103,6 +111,15 @@
                 </dxc:ChartView.Hint>
             </dxc:ChartView>
 
+
+            <StackLayout Orientation="Horizontal" Margin="100, 20, 100, 0">
+                <Label Text="Seleccione el año: " FontFamily="Montserrat-Medium" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                <Picker Title="Año" x:Name="yearBar2" FontFamily="Montserrat-Medium" HorizontalTextAlignment="Center">
+                    <Picker.ItemsSource>
+                        <x:Array x:Name="yearsBar2" Type="{x:Type x:Int32}"/>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
             <dxc:ChartView HeightRequest="200" Margin="0, 10, 0, 0">
                 <dxc:ChartView.Series>
                     <dxc:BarSeries PointColorizer="{local:CustomColorizer2}">
