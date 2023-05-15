@@ -191,7 +191,9 @@ namespace CashFlow.PhoneScreens
                     Surnames = user.Surnames,
                     InitCapital = user.InitCapital,
                     Capital = user.Capital + cap,
-                    MensualEarning = user.MensualEarning
+                    MensualEarning = user.MensualEarning,
+                    NamePrivkey = user.NamePrivkey,
+                    SurnamesPrivKey = user.SurnamesPrivKey
                 };
                 await database.UpdateUserAsync(editedUser);
             }
@@ -204,7 +206,9 @@ namespace CashFlow.PhoneScreens
                     Surnames = user.Surnames,
                     InitCapital = user.InitCapital,
                     Capital = user.Capital - cap,
-                    MensualEarning = user.MensualEarning
+                    MensualEarning = user.MensualEarning,
+                    NamePrivkey = user.NamePrivkey,
+                    SurnamesPrivKey = user.SurnamesPrivKey
                 };
                 await database.UpdateUserAsync(editedUser);
             }

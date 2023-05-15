@@ -1,6 +1,5 @@
 using CashFlow.Data;
 using CashFlow.Models;
-using DevExpress.Maui.Charts;
 
 namespace CashFlow.PhoneScreens;
 

@@ -63,7 +63,9 @@ public partial class ActivityEditScreen : ContentPage
                     Surnames = user.Surnames,
                     InitCapital = user.InitCapital,
                     Capital = user.Capital - activity.Quantity - oldActivity.Quantity,
-                    MensualEarning = user.MensualEarning
+                    MensualEarning = user.MensualEarning,
+                    NamePrivkey = user.NamePrivkey,
+                    SurnamesPrivKey = user.SurnamesPrivKey
                 };
                 await database.UpdateUserAsync(editedUser);
             }
@@ -76,7 +78,9 @@ public partial class ActivityEditScreen : ContentPage
                     Surnames = user.Surnames,
                     InitCapital = user.InitCapital,
                     Capital = user.Capital + activity.Quantity + oldActivity.Quantity,
-                    MensualEarning = user.MensualEarning
+                    MensualEarning = user.MensualEarning,
+                    NamePrivkey = user.NamePrivkey,
+                    SurnamesPrivKey = user.SurnamesPrivKey
                 };
                 await database.UpdateUserAsync(editedUser);
             }
@@ -91,7 +95,9 @@ public partial class ActivityEditScreen : ContentPage
                         Surnames = user.Surnames,
                         InitCapital = user.InitCapital,
                         Capital = user.Capital - oldActivity.Quantity + activity.Quantity,
-                        MensualEarning = user.MensualEarning
+                        MensualEarning = user.MensualEarning,
+                        NamePrivkey = user.NamePrivkey,
+                        SurnamesPrivKey = user.SurnamesPrivKey
                     };
                     await database.UpdateUserAsync(editedUser);
                 }
@@ -104,7 +110,9 @@ public partial class ActivityEditScreen : ContentPage
                         Surnames = user.Surnames,
                         InitCapital = user.InitCapital,
                         Capital = user.Capital + oldActivity.Quantity - activity.Quantity,
-                        MensualEarning = user.MensualEarning
+                        MensualEarning = user.MensualEarning,
+                        NamePrivkey = user.NamePrivkey,
+                        SurnamesPrivKey = user.SurnamesPrivKey
                     };
                     await database.UpdateUserAsync(editedUser);
                 }

@@ -37,8 +37,9 @@ public partial class ConfigScreenEdit : ContentPage
         {
             User oldUser = await database.GetUserAsync();
             string nombreEncriptado = RSAUtils.encriptar(name.Text.Trim());
-
+            string namePrivKey = RSAUtils.privKeyStr;
             string apellidosEncriptado = RSAUtils.encriptar(surnames.Text.Trim());
+            string surnamesPrivkey = RSAUtils.privKeyStr;
 
             double menE = Convert.ToDouble(mensualEarning.Text, CultureInfo.InvariantCulture);
             User user = new User()
@@ -48,7 +49,9 @@ public partial class ConfigScreenEdit : ContentPage
                 Surnames = apellidosEncriptado,
                 InitCapital = oldUser.InitCapital,
                 Capital = oldUser.Capital,
-                MensualEarning = (float)Math.Round(menE, 2)
+                MensualEarning = (float)Math.Round(menE, 2),
+                NamePrivkey = namePrivKey,
+                SurnamesPrivKey = surnamesPrivkey
             };
             await database.UpdateUserAsync(user);
             await DisplayAlert("Éxito", "Modificado el movimiento correctamente", "Aceptar");
