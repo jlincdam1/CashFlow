@@ -6,9 +6,6 @@ namespace CashFlow.PhoneScreens;
 public partial class GraphicsScreen : ContentPage
 {
     public readonly CashFlowDatabase database;
-
-    public double gastos;
-    public double inversiones;
     public List<Movimiento> MovimientosPie { get; set; }
     public List<Mov> Gastos { get; set; }
 
@@ -23,8 +20,6 @@ public partial class GraphicsScreen : ContentPage
         NavigationPage.SetHasNavigationBar(this, false);
         Animacion();
         mesPie.SelectedItem = DateTime.Now.Month;
-        gastos = 0;
-        inversiones = 0;
         database = new CashFlowDatabase();
         MovimientosPie = new List<Movimiento>();
         palette = PaletteLoader.LoadPalette("#f45a4e", "#25a966");
@@ -51,32 +46,43 @@ public partial class GraphicsScreen : ContentPage
     private async void LoadActivities()
     {
         List<Activities> activities = await database.GetActivitiesAsync();
-        gastos = 0;
-        inversiones = 0;
-        if (activities.Count > 0)
+        MovimientosPie = new List<Movimiento>()
+        {
+            new Movimiento("Gastos", 0),
+            new Movimiento("Inversiones", 0)
+        };
+        if (activities.Any())
         {
             foreach (Activities activity in activities)
             {
-                if(activity.ActivityDate.Month.ToString() == mesPie.SelectedItem.ToString() && activity.ActivityDate.Year == DateTime.Now.Year)
+                if (activity.ActivityDate.Month.ToString() == mesPie.SelectedItem.ToString() && activity.ActivityDate.Year == DateTime.Now.Year)
                 {
                     if (activity.ActType == "Inversión")
                     {
-                        inversiones += activity.Quantity;
+                        MovimientosPie[1].Quantity += activity.Quantity;
                     }
                     else
                     {
-                        gastos += activity.Quantity;
+                        MovimientosPie[0].Quantity += activity.Quantity;
                     }
                 }
             }
+            if (MovimientosPie[1].Quantity > 0 || MovimientosPie[0].Quantity > 0)
+            {
+                datosPie.DataSource = MovimientosPie;
+                coloresPie.Palette = Palette;
+            }
+            else
+            {
+                datosPie.DataSource = null;
+            }
+
         }
-        MovimientosPie = new List<Movimiento>()
+        else
         {
-            new Movimiento("Gastos", gastos),
-            new Movimiento("Inversiones", inversiones)
-        };
-        datosPie.DataSource = MovimientosPie;
-        coloresPie.Palette = Palette;
+            datosPie.DataSource = null;
+        }
+
     }
 
     private async void LoadMovimientosSeries()
@@ -212,8 +218,8 @@ public partial class GraphicsScreen : ContentPage
 
 public class Movimiento
 {
-    public string MovName { get; }
-    public double Quantity { get; }
+    public string MovName { get; set; }
+    public double Quantity { get; set; }
 
     public Movimiento(string actName, double quant)
     {
