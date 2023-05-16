@@ -17,11 +17,9 @@ namespace CashFlow.Data
 
             pubKeyStr = rsa.GetPublicKey();
             privKeyStr = rsa.GetPrivateKey();
-
             var pubKey = RSAServices.PublicParametersFromXml(pubKeyStr);
 
             string resulEncrit = rsa2.Encrypt(str, pubKey);
-
             return resulEncrit;
         }
 
@@ -32,7 +30,6 @@ namespace CashFlow.Data
             var privKey = RSAServices.PublicParametersFromXml(privkeyStr);
 
             string resulDecript = rsa.Decrypt(msjEncriptado, privKey);
-
             return resulDecript;
         }
     }

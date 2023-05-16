@@ -22,18 +22,17 @@ namespace CashFlow.Data
             await Database.CreateTableAsync<User>();
             await Database.CreateTableAsync<Activities>();
         }
+
         public async Task<User> GetUserAsync()
         {
             await Init();
             return await Database.Table<User>().FirstOrDefaultAsync();
         }
-
         public async Task<int> SaveUserAsync(User user)
         {
             await Init();
             return await Database.InsertAsync(user);
         }
-
         public async Task<int> DeleteUserAsync()
         {
             await Init();
@@ -45,7 +44,7 @@ namespace CashFlow.Data
             return await Database.UpdateAsync(user);
         }
 
-        // Métodos para los movimientos
+        // Métodos para la tabla Activities
         public async Task<List<Activities>> GetActivitiesAsync()
         {
             await Init();
@@ -71,7 +70,6 @@ namespace CashFlow.Data
             await Init();
             return await Database.DeleteAllAsync<Activities>();
         }
-
         public async Task<int> UpdateActivity(Activities act)
         {
             await Init();
