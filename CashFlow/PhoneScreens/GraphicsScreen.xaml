@@ -86,7 +86,7 @@
                             </dxc:SeriesDataAdapter>
                         </dxc:BarSeries.Data>
                         <dxc:BarSeries.HintOptions>
-                            <dxc:SeriesHintOptions PointTextPattern="{}{A$YYYY-MM}: {V$.##} €"/>
+                            <dxc:SeriesHintOptions PointTextPattern="{}{A$MM}: {V$.##} €"/>
                         </dxc:BarSeries.HintOptions>
                     </dxc:BarSeries>
                 </dxc:ChartView.Series>
@@ -117,7 +117,7 @@
                             </dxc:SeriesDataAdapter>
                         </dxc:BarSeries.Data>
                         <dxc:BarSeries.HintOptions>
-                            <dxc:SeriesHintOptions PointTextPattern="{}{A$YYYY-MM}: {V$.##} €"/>
+                            <dxc:SeriesHintOptions PointTextPattern="{}{A$MM}: {V$.##} €"/>
                         </dxc:BarSeries.HintOptions>
                     </dxc:BarSeries>
                 </dxc:ChartView.Series>
