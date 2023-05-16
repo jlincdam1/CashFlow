@@ -13,6 +13,7 @@
                                     AxisLineVisible="True"/>
         <dxc:AxisStyle x:Key="axisStyle" LineColor="Black" MajorGridlinesColor="Black"/>
     </ContentPage.Resources>
+    
     <ScrollView>
         <StackLayout>
             <Label Text="Añada inversiones y gastos para visualizarlos en las gráficas. Todas las gráficas muestran datos de este año" 
@@ -38,6 +39,7 @@
                     </Picker.ItemsSource>
                 </Picker>
             </StackLayout>
+            <!--Gráfica de secciones-->
             <dxc:PieChartView SelectionBehavior="Hatch" HeightRequest="230" Margin="15, 10, 15, 10">
                 <dxc:PieChartView.Series>
                     <dxc:PieSeries>
@@ -73,7 +75,7 @@
                     </dxc:Legend>
                 </dxc:PieChartView.Legend>
             </dxc:PieChartView>
-
+            <!--Gráficas de barras-->
             <Label Text="Gráficas de barras de gastos e inversiones mensuales" FontAttributes="Bold" HorizontalOptions="Center" Padding="20" Margin="0, 40, 0, 0"/>
             <dxc:ChartView HeightRequest="200">
                 <dxc:ChartView.Series>
@@ -136,7 +138,7 @@
                     <dxc:Hint Enabled="True"/>
                 </dxc:ChartView.Hint>
             </dxc:ChartView>
-
+            <!--Gráfica de líneas-->
             <Label Text="Gráfica de comparación de gastos e inversiones" FontAttributes="Bold" HorizontalOptions="Center" Padding="20" Margin="0, 40, 0, 0"/>
             <dxc:ChartView HeightRequest="350" Margin="0, 10, 0, 20">
                 <dxc:ChartView.Series>

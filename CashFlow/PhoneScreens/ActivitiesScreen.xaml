@@ -20,13 +20,14 @@
                     AbsoluteLayout.LayoutBounds="0.5, 0.1, -1, -1" FontSize="18"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
                 <Line X1="0" Y1="0" X2="330" Y2="0"
-                  StrokeLineCap="Flat" StrokeThickness="2.5" Stroke="black"
-                  AbsoluteLayout.LayoutBounds="-1, 0.35, -1, -1"
-                  AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    StrokeLineCap="Flat" StrokeThickness="2.5" Stroke="black"
+                    AbsoluteLayout.LayoutBounds="-1, 0.35, -1, -1"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
                 <Label x:Name="capActual" FontFamily="Montserrat-Medium"
                     AbsoluteLayout.LayoutBounds="0.5, 0.8, -1, -1" FontSize="26"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
             </AbsoluteLayout>
+            
             <AbsoluteLayout>
                 <BoxView AbsoluteLayout.LayoutBounds="0.5, 0, 330, 58" 
                      AbsoluteLayout.LayoutFlags="PositionProportional"
@@ -39,8 +40,10 @@
                     AbsoluteLayout.LayoutBounds="0.5, 1.5, 305, 45"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
             </AbsoluteLayout>
+            
             <Button Text="+   Añadir" FontFamily="Montserrat-Medium" BackgroundColor="#BCBCBC" Margin="0, 20, 0, 40"
                     TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End" Clicked="AddInvestAsync" Opacity="0.8"/>
+            
             <AbsoluteLayout>
                 <BoxView AbsoluteLayout.LayoutBounds="0.5, 0, 330, 58" 
                      AbsoluteLayout.LayoutFlags="PositionProportional"
@@ -53,8 +56,10 @@
                     AbsoluteLayout.LayoutBounds="0.5, 1.5, 305, 45"
                     AbsoluteLayout.LayoutFlags="PositionProportional" />
             </AbsoluteLayout>
+            
             <Button Text="+   Añadir" FontFamily="Montserrat-Medium" BackgroundColor="#BCBCBC" Margin="0, 20, 0, 40"
                     TextColor="Black" CornerRadius="10" WidthRequest="100" HorizontalOptions="End" Clicked="AddOutlayAsync" Opacity="0.8"/>
+            
             <Label Text="GASTOS E INVERSIONES" FontAttributes="Bold"
                    FontFamily="Montserrat-Medium" FontSize="15"/>
             <Line X1="0" Y1="0" X2="330" Y2="0" HeightRequest="30"

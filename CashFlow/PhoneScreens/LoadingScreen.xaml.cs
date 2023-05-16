@@ -6,6 +6,7 @@ namespace CashFlow.PhoneScreens;
 public partial class LoadingScreen : ContentPage
 {
     private readonly CashFlowDatabase database;
+
     public LoadingScreen()
 	{
 		InitializeComponent();

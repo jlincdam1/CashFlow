@@ -11,6 +11,7 @@ namespace CashFlow.PhoneScreens
         private readonly CashFlowDatabase database;
         public static string buttonId;
         private User user;
+
         public ActivitiesScreen()
         {
             InitializeComponent();
@@ -21,6 +22,16 @@ namespace CashFlow.PhoneScreens
         protected override bool OnBackButtonPressed()
         {
             return true;
+        }
+
+        protected override void OnAppearing()
+        {
+            var content = (StackLayout)FindByName("layout");
+            for (int i = content.Children.Count - 1; i >= 7; i--)
+            {
+                content.Children.RemoveAt(i);
+            }
+            Load();
         }
 
         private async void AddInvestAsync(object sender, EventArgs e)
@@ -175,16 +186,6 @@ namespace CashFlow.PhoneScreens
                 outlay.Text = "";
                 Load();
             }
-        }
-
-        protected override void OnAppearing()
-        {
-            var content = (StackLayout)FindByName("layout");
-            for (int i = content.Children.Count - 1; i >= 7; i--)
-            {
-                content.Children.RemoveAt(i);
-            }
-            Load();
         }
 
         private async void UpdateCapital(float cap, Activities act)

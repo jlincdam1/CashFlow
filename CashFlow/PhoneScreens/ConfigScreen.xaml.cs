@@ -7,6 +7,7 @@ namespace CashFlow.PhoneScreens;
 public partial class ConfigScreen : ContentPage
 {
     private readonly CashFlowDatabase database;
+
     public ConfigScreen()
     {
         InitializeComponent();
@@ -18,6 +19,11 @@ public partial class ConfigScreen : ContentPage
         return true;
     }
 
+    protected override void OnAppearing()
+    {
+        LoadData();
+    }
+
     private async void LoadData()
     {
         User user = await database.GetUserAsync();
@@ -25,11 +31,6 @@ public partial class ConfigScreen : ContentPage
         apellidos.Text = RSAUtils.Desencriptar(user.SurnamesPrivKey, user.Surnames);
         capital.Text = user.Capital.ToString(CultureInfo.InvariantCulture);
         gananciaM.Text = user.MensualEarning.ToString(CultureInfo.InvariantCulture);
-    }
-
-    protected override void OnAppearing()
-    {
-        LoadData();
     }
 
     private async void EditProfile(object sender, EventArgs e)

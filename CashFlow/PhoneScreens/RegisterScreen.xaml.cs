@@ -9,12 +9,19 @@ public partial class RegisterScreen : ContentPage
     private readonly CashFlowDatabase database;
     public string namePrivKey;
     public string surnamesPrivKey;
+
 	public RegisterScreen()
 	{
 		InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
         database = new CashFlowDatabase();
 	}
+
+
+    protected override void OnAppearing()
+    {
+        CheckUser();
+    }
 
     private async void CheckUser()
     {
@@ -26,11 +33,6 @@ public partial class RegisterScreen : ContentPage
             );
             await Navigation.PushAsync(new LoadingScreen());
         }
-    }
-
-    protected override void OnAppearing()
-    {
-        CheckUser();
     }
 
     async void Registrarse(object sender, EventArgs e)

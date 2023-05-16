@@ -7,6 +7,7 @@ namespace CashFlow.PhoneScreens;
 public partial class ConfigScreenEdit : ContentPage
 {
     private readonly CashFlowDatabase database;
+
     public ConfigScreenEdit()
 	{
 		InitializeComponent();
