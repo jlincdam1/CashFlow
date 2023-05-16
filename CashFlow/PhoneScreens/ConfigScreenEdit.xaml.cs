@@ -25,7 +25,7 @@ public partial class ConfigScreenEdit : ContentPage
 
     private async void Cancel(object sender, EventArgs e)
     {
-        bool respuesta = await DisplayAlert("Título", "¿Desea continuar?", "Sí", "No");
+        bool respuesta = await DisplayAlert("Cancelar", "¿Desea continuar?", "Sí", "No");
         if (respuesta)
         {
             await Navigation.PopAsync();

@@ -33,6 +33,19 @@ public partial class GraphicsScreen : ContentPage
         return true;
     }
 
+    protected override void OnAppearing()
+    {
+        LoadActivities();
+        LoadMovimientosSeries();
+        LoadComparacion();
+        mesPie.SelectedIndexChanged += mesPie_SelectedIndexChanged;
+    }
+
+    private void mesPie_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        LoadActivities();
+    }
+
     private async void Animacion()
     {
         await Task.WhenAll(
@@ -200,19 +213,6 @@ public partial class GraphicsScreen : ContentPage
         ingresosDatos.DataSource = MovIngresos.Values;
         nombreGastos.DisplayName = MovGastos.Tipo;
         gastosDatos.DataSource = MovGastos.Values;
-    }
-
-    protected override void OnAppearing()
-    {
-        LoadActivities();
-        LoadMovimientosSeries();
-        LoadComparacion();
-        mesPie.SelectedIndexChanged += mesPie_SelectedIndexChanged;
-    }
-
-    private void mesPie_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        LoadActivities();
     }
 }
 

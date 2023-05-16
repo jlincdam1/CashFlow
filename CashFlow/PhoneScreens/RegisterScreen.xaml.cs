@@ -88,7 +88,7 @@ public partial class RegisterScreen : ContentPage
         }
         else
         {
-            await DisplayAlert("Error", "Error al añadir", "Aceptar");
+            await DisplayAlert("Error", "Error al registrarse", "Aceptar");
         }
     }
 
